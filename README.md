@@ -1,0 +1,47 @@
+# Clubjudge Assignment
+
+
+## Overview
+
+The point of this test assignment is to develop a minimalistic prototype of a Twitter search result viewer. There are 2 parts to the assignment: fulfilling the assignment's requirements and a "questions&answers" segment after delivery.
+
+### Desired functionality
+
+Mockup of the app to develop:
+
+![](https://dl.dropbox.com/u/540375/BrunoAbrantesProj.png)
+
+Project WittyName is all about Twitter searches. You search for specific terms, and you get Twitter results matching that string. As you click every result (#1,#2,#3,#4), they will be mapped out onto the visualization area. The twist is that the visualization area changes with the number of followers of the result clicked. Assuming #1 has 200 followers, #2 has 3, #3 has 1600 and $4 has 251, this is the progression of the visualization area:
+
+After clicking #1:
+
+![](https://dl.dropbox.com/u/540375/Drawing1.png)
+
+After clicking #2:
+
+![](https://dl.dropbox.com/u/540375/Drawing2.png)
+
+After clicking #3:
+
+![](https://dl.dropbox.com/u/540375/Drawing3.png)
+
+After clicking #4:
+
+![](https://dl.dropbox.com/u/540375/Drawing4.png)
+
+So, new results add to the visualization area in proportional size to the number of followers (keep in mind that the actual scale depicted might be a bit off). The specific math is up to you, as is the contents of each result tile.
+
+
+### Requirements
+
+* Rails or Sinatra based (primary)
+* some measure of code coverage with a testing framework of your choice (primary)
+* NoSQL data storage (secondary)
+* realtime chart updates (secondary)
+
+### Deadline
+
+The deadline is set to Feb 15th. If you need more time (2/3 days), let us know.
+
+
+Good luck!
