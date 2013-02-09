@@ -2,10 +2,13 @@ require([
 	'use!backbone',
 	'jquery',
 	'router',
-	'models/app'
-], function(B, $, Router, app) {
+	'models/app',
+	'lib/console',
+	'use!bootstrap'
+], function(Backbone, $, Router, app) {
 	$(function() {
 		app.router = new Router();
-		B.history.start();
+		window.APP = app;
+		Backbone.history.start();
 	});
 });

@@ -1,7 +1,17 @@
 define([
-  'use!backbone'
-], function(B) {
-	var Router = B.Router.extend({
+  'use!backbone',
+  'controllers/search'
+], function(B, Search) {
+	var Router,
+		currentPage;
+
+	function cleanup() {
+		if (currentPage && currentPage.destroy && _.isFunction(currentPage.destroy)) {
+			currentPage.destroy();
+		}
+	}
+
+	Router = B.Router.extend({
 		routes : {
 			'' :              'search',
 			'search/:term' :  'search',
@@ -9,24 +19,20 @@ define([
 		},
 
 		search : function(term) {
-			/*
 			if (!currentPage || currentPage.name !== 'search') {
 				cleanup();
-				currentPage = Search();
+				currentPage = new Search();
 			}
 
 			currentPage.update({ term : term });
-			*/
 		},
 
 		empty : function() {
-			/*
 			cleanup();
 
 			currentPage = {
 				destroy : function() { }
 			};
-			*/
 		}
 	});
 

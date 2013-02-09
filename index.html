@@ -15,13 +15,28 @@
         <link rel="stylesheet" href="css/src/bootstrap.css">
         <link rel="stylesheet" href="css/src/main.css">
     </head>
-    <body>
+    <body role="application">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+    	<header id="app-nav" class="navbar navbar-inverse navbar-fixed-top">
+    		<div class="navbar-inner">
+    			<div class="container">
+	        		<a class="brand" href="/">
+	        			Popularity Contest
+	        		</a>
+	        		<div data-widget="search" class="pull-left"></div>
+	        	</div>
+        	</div>
+    	</header>
+
+    	<div class="container-fluid">
+    		<div class="row-fluid">
+    			<div class="span3" data-widget="results">
+    			</div>
+    		</div>
+    	</div>
 
         <script src="js/src/lib/require.js" data-main="/js/src/config"></script>
     </body>

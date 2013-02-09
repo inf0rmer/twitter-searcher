@@ -1,0 +1,6 @@
+<nav class="well sidebar">
+	<ul class="nav nav-sidebar js-list">
+		<li class="nav-header">Search Results</li>
+	</ul>
+	<button class="btn" data-action="load-more">Load More</button>
+</nav>

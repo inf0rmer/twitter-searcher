@@ -14,6 +14,18 @@ module.exports = function(grunt) {
 		qunit: {
 			files: ['test/**/*.html']
 		},
+		lint: {
+			files: ['grunt.js', 'js/src/*.js', 'js/src/!(lib)**/*.js', 'test/*.js', 'test/!(lib)**/*.js']
+		},
+		recess: {
+			dev: {
+				src: ['css/src/main.less'],
+				dest: 'css/src/main.css',
+				options: {
+					compile: true
+				}
+			}
+		},
 		concat: {
 			dist: {
 				src: ['<banner:meta.banner>', '<file_strip_banner:lib/FILE_NAME.js>'],
@@ -27,11 +39,8 @@ module.exports = function(grunt) {
 			}
 		},
 		watch: {
-			files: '<config:lint.files>',
-			tasks: 'lint'
-		},
-		lint: {
-			files: ['grunt.js', 'js/src/*.js', 'js/src/!(lib)**/*.js', 'test/*.js', 'test/!(lib)**/*.js']
+			files: ['<config:lint.files>', 'css/src/*.less'],
+			tasks: ['lint', 'recess:dev']
 		},
 		jshint: {
 			options: {
@@ -50,12 +59,15 @@ module.exports = function(grunt) {
 			globals: {
 				require: true,
 				define: true,
-				requirejs: true
+				requirejs: true,
+				_: true,
+				console: true
 			}
 		},
 		uglify: {}
 	});
 
+	grunt.loadNpmTasks('grunt-recess');
 	// Default task.
 	grunt.registerTask('default', 'lint');
 };

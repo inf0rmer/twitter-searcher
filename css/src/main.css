@@ -1,3 +1,31 @@
-#container {
-	font-size: 12px;
+body {
+  padding-top: 60px;
+}
+
+.navbar .brand {
+  float: right;
+}
+
+.nav-list .result-item {
+  display: block;
+}
+
+.nav-list .result-item a {
+  display: block;
+  padding: 10px 5px;
+  margin: 0;
+}
+
+.nav-list .result-item a:hover {
+  background-color: transparent;
+}
+
+.nav-list .result-item h1 {
+  margin: 0;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.nav-list .result-item:nth-child(2n) {
+  background-color: #eee;
 }
