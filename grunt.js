@@ -11,11 +11,8 @@ module.exports = function(grunt) {
 				'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
 				'Bruno Abrantes; Licensed MIT */'
 		},
-		qunit: {
-			files: ['test/**/*.html']
-		},
 		lint: {
-			files: ['grunt.js', 'js/src/*.js', 'js/src/!(lib)**/*.js', 'test/*.js', 'test/!(lib)**/*.js']
+			files: ['grunt.js', 'js/src/*.js', 'js/src/!(lib)**/*.js']
 		},
 		recess: {
 			dev: {
@@ -57,11 +54,21 @@ module.exports = function(grunt) {
 				browser: true
 			},
 			globals: {
-				require: true,
-				define: true,
-				requirejs: true,
-				_: true,
-				console: true
+				require: false,
+				define: false,
+				requirejs: false,
+				_: false,
+				console: false,
+				expect: false,
+				describe: false,
+				before: false,
+				beforeEach: false,
+				it: false,
+				setup: false,
+				suite: false,
+				teardown: false,
+				test: false,
+				mocha: false
 			}
 		},
 		uglify: {}

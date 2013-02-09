@@ -15,6 +15,7 @@ define([
 
 		initialize: function() {
 			_.bindAll(this, 'enable');
+			this.bindTo(this, 'updateVal', this._updateVal);
 		},
 
 		_search: function(evt) {
@@ -38,6 +39,11 @@ define([
 		_disable: function() {
 			this.disabled = true;
 			this.submitElement.attr('disabled', true);
+		},
+
+		_updateVal: function(term) {
+			if (!term) {return;}
+			this.inputElement.val(term);
 		}
 	});
 });

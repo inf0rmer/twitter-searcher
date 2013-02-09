@@ -36,11 +36,13 @@ define([
 
 		update = function(term) {
 			var dfd = $.Deferred(),
+				currentTerm = app.get('currentSearch'),
 				search;
 
 			app.set('currentSearch', term);
 
 			if (term) {
+				searchForm.trigger('updateVal', term);
 				search = new Search({term: term});
 
 				results.fetch({

@@ -1,6 +1,6 @@
 require.config({
   // Initialize the application with the main application file
-  deps : [ 'main' ],
+  deps : window.mocha ? [ '../../test/runner' ] : [ 'main' ],
 
   paths : {
 	// JavaScript folders
