@@ -22,6 +22,10 @@ define([
 					navigatedTo = dest;
 				}
 			};
+
+			s.results.url = function() {
+				return window.location.protocol + '//' + window.location.hostname + '/test/fixtures/search.json';
+			};
 		});
 
 		afterEach(function() {

@@ -7,6 +7,10 @@ define([
 
 	var endpoint = "http://search.twitter.com/search.json";
 
+	function getRootUrl(url) {
+		return url.toString().replace(/^(.*\/\/[^\/?#]*).*$/,"$1");
+	}
+
 	return LiveCollection.extend({
 		_numberOfResults: 10,
 
@@ -27,7 +31,7 @@ define([
 
 			options = _.extend(options, {
 				diff: true,
-				dataType: 'jsonp'
+				dataType: (getRootUrl(window.location.href) === getRootUrl(this.url())) ? 'json' : 'jsonp'
 			});
 
 			if (options.data && options.data.term) {

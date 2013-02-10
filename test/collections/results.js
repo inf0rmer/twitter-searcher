@@ -9,10 +9,10 @@ define([
 			data = { data : { term : 'foo bar' } };
 
 			results.term = 'foo bar';
-		});
 
-		it("should return a URI-encoded URL", function() {
-			expect(results.url()).to.be('http://search.twitter.com/search.json?q='+ encodeURIComponent('foo bar') +'&rpp=10&page=1&include_entities=false&result_type=mixed');
+			results.url = function() {
+				return window.location.protocol + '//' + window.location.hostname + '/test/fixtures/search.json';
+			};
 		});
 
 		it("should trigger a fetching event when fetching", function() {

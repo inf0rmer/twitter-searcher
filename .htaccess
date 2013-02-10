@@ -6,3 +6,5 @@
     RewriteCond %{REQUEST_URI} !index
     RewriteRule (.*) index.html [L]
 </ifModule>
+
+AddType application/json .json
