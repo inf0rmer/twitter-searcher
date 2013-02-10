@@ -2,6 +2,7 @@ var tests = [
 	'../../test/models/app',
 	'../../test/models/result',
 
+	'../../test/collections/searches',
 	'../../test/collections/results',
 
 	'../../test/controllers/base',
