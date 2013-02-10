@@ -1,4 +1,6 @@
 var tests = [
+	'views/templates/templates',
+
 	'../../test/models/app',
 	'../../test/models/result',
 
@@ -12,7 +14,8 @@ var tests = [
 	'../../test/views/search',
 	'../../test/views/searches',
 	'../../test/views/results',
-	'../../test/views/result'
+	'../../test/views/result',
+	'../../test/views/visualisation'
 ];
 
 require(tests, function() {

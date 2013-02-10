@@ -7,7 +7,7 @@ define([
 	return View.extend({
 		template: 'js/src/views/templates/result.template',
 
-		element: 'li',
+		tagName: 'li',
 
 		className: 'result-item',
 
@@ -48,13 +48,17 @@ define([
 			this.$el.removeClass('selected');
 		},
 
-		toggleSelected: function() {
+		toggleSelected: function(evt) {
 			var selected = this._selected;
 
 			if (selected) {
 				this.model.trigger('unselected');
 			} else {
 				this.model.trigger('selected');
+			}
+
+			if (evt && evt.preventDefault) {
+				evt.preventDefault();
 			}
 		}
 	});

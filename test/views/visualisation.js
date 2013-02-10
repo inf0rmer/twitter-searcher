@@ -1,0 +1,61 @@
+define([
+	'models/result',
+	'views/visualisation'
+], function(Result, Visualisation) {
+	describe('Visualisation View', function() {
+		var el, visualisation;
+
+		beforeEach(function() {
+			el = $('#test').empty();
+			visualisation = new Visualisation({}).render().placeAt(el);
+		});
+
+		afterEach(function(){
+			visualisation.destroy();
+			$('#test').empty();
+		});
+
+		it('should render the component', function() {
+			expect(el.find('.result-holder').length).to.be(1);
+		});
+
+		it('should respond to the app-wide result/select event to add a model to its results array', function() {
+			var aResult = new Result();
+			Backbone.trigger('result/selected', aResult);
+			expect(visualisation.results.length).to.be(1);
+		});
+
+		it('should respond to the app-wide result/unselect event to remove a model from its results array', function() {
+			var aResult = new Result();
+
+			Backbone.trigger('result/selected', aResult);
+			expect(visualisation.results.length).to.be(1);
+
+			Backbone.trigger('result/unselected', aResult);
+			expect(visualisation.results.length).to.be(0);
+		});
+
+		it('should not add a duplicate result', function() {
+			var aResult = new Result();
+			Backbone.trigger('result/selected', aResult);
+
+			expect(function() {
+				Backbone.trigger('result/selected', aResult);
+			}).to.throwError();
+		});
+
+		it('should have no more results than the value of its limit property', function() {
+			visualisation.destroy();
+			visualisation = new Visualisation({
+				limit: 1
+			}).render().placeAt(el);
+
+			var aResult = new Result();
+			var oResult = new Result();
+			Backbone.trigger('result/selected', aResult);
+			Backbone.trigger('result/selected', oResult);
+
+			expect(visualisation.results.length).to.be(1);
+		});
+	});
+});

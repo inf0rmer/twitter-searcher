@@ -3,7 +3,7 @@ this["JST"] = this["JST"] || {};
 this["JST"]["js/src/views/templates/result.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<article>\n\t<a href="#" class="row-fluid">\n\t\t<div class="span3 thumbnal">\n\t\t\t<img class="user-picture img-circle" src="'+
+__p+='<article>\n\t<a href="#" class="row-fluid" data-bypass="true">\n\t\t<div class="span3 thumbnal">\n\t\t\t<img class="user-picture img-circle" src="'+
 ( profile_image_url )+
 '" alt="@'+
 ( from_user )+
@@ -19,7 +19,7 @@ return __p;
 this["JST"]["js/src/views/templates/results.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<nav class="well sidebar">\n\t<ul class="nav nav-sidebar js-list">\n\t\t<li class="nav-header">Search Results</li>\n\t</ul>\n\t<button class="btn hide js-loadMore" data-action="load-more"><i class="icon-chevron-down"></i>Load More Results</button>\n</nav>';
+__p+='<nav class="well sidebar">\n\t<div class="wrapper">\n\t\t<ul class="nav nav-sidebar js-list">\n\t\t\t<li class="nav-header">Search Results</li>\n\t\t</ul>\n\t</div>\n\t<button class="btn hide js-loadMore" data-action="load-more"><i class="icon-chevron-down"></i>Load More Results</button>\n</nav>';
 }
 return __p;
 };
@@ -58,6 +58,14 @@ __p+='';
 '\n\t\t<br />\n\t\t<small class="muted">'+
 ( time_ago )+
 '</small>\n\t</a>\n</li>';
+}
+return __p;
+};
+
+this["JST"]["js/src/views/templates/visualisation.template"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class="alert alert-info">\n\tChoose <span class="js-number badge badge-info">5</span> search results and compare them!\n</div>\n<div class="result-holder well">\n</div>';
 }
 return __p;
 };

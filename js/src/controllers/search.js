@@ -11,8 +11,9 @@ define([
 
 	'views/results',
 	'views/searches',
-	'views/search'
-], function($, Controller, app, Search, Searches, Results, ResultsView, RecentSearchesView, SearchView) {
+	'views/search',
+	'views/visualisation'
+], function($, Controller, app, Search, Searches, Results, ResultsView, RecentSearchesView, SearchView, VisualisationView) {
 	return function() {
 		var update,
 			titlePattern = 'Popularity Contest - Searching for "{{term}}"',
@@ -37,7 +38,8 @@ define([
 				currentSearch: function() {
 					return app.get('currentSearch');
 				}
-			}, '[data-widget="recent-searches"]');
+			}, '[data-widget="recent-searches"]'),
+			visualisation = SearchController.addView(VisualisationView, {}, '[data-widget="visualisation"]');
 
 		update = function(term) {
 			var dfd = $.Deferred(),
