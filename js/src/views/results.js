@@ -2,11 +2,10 @@ define([
 	'use!underscore',
 	'jquery',
 	'views/base',
-	'views/result',
-	'text!views/templates/results.template'
-], function(_, $, View, ResultView, template) {
+	'views/result'
+], function(_, $, View, ResultView) {
 	return View.extend({
-		template: template,
+		template: 'js/src/views/templates/results.template',
 
 		elements: ['list', 'loadMore'],
 

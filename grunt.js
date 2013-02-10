@@ -35,9 +35,16 @@ module.exports = function(grunt) {
 				dest: 'dist/FILE_NAME.min.js'
 			}
 		},
+		jst: {
+			compile: {
+				files: {
+					'js/src/views/templates/templates.js': ['js/src/views/templates/*.template']
+				}
+			}
+		},
 		watch: {
-			files: ['<config:lint.files>', 'css/src/*.less'],
-			tasks: ['lint', 'recess:dev']
+			files: ['<config:lint.files>', 'css/src/*.less', 'js/src/views/templates/*.template'],
+			tasks: ['lint', 'recess:dev', 'jst:compile']
 		},
 		jshint: {
 			options: {
@@ -79,6 +86,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-recess');
+	grunt.loadNpmTasks('grunt-contrib-jst');
 	// Default task.
 	grunt.registerTask('default', 'lint');
 };

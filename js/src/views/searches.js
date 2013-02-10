@@ -1,14 +1,12 @@
 define([
 	'use!underscore',
 	'jquery',
-	'views/base',
-	'text!views/templates/searches.template',
-	'text!views/templates/searchItem.template'
-], function(_, $, View, template, itemTemplate) {
+	'views/base'
+], function(_, $, View) {
 	return View.extend({
-		template: template,
+		template: 'js/srcviews/templates/searches.template',
 
-		itemTemplate: _.template(itemTemplate),
+		itemTemplate: window.JST['js/src/views/templates/searchItem.template'],
 
 		className: 'btn-group',
 

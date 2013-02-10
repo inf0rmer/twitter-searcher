@@ -4,6 +4,7 @@ require([
 	'router',
 	'models/app',
 	'lib/console',
+	'views/templates/templates',
 	'use!bootstrap'
 ], function(Backbone, $, Router, app) {
 	$(function() {

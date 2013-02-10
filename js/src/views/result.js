@@ -2,11 +2,10 @@ define([
 	'use!underscore',
 	'jquery',
 	'views/base',
-	'text!views/templates/result.template',
 	'lib/humanized_time_span'
-], function(_, $, View, template) {
+], function(_, $, View) {
 	return View.extend({
-		template: template,
+		template: 'js/src/views/templates/result.template',
 
 		element: 'li',
 

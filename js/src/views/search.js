@@ -1,11 +1,10 @@
 define([
 	'use!underscore',
 	'jquery',
-	'views/base',
-	'text!views/templates/search.template'
-], function(_, $, View, template) {
+	'views/base'
+], function(_, $, View) {
 	return View.extend({
-		template: template,
+		template: 'js/src/views/templates/search.template',
 
 		elements : [ 'input', 'submit' ],
 
