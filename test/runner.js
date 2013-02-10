@@ -8,7 +8,8 @@ var tests = [
 	'../../test/controllers/search',
 
 	'../../test/views/base',
-	'../../test/views/search'
+	'../../test/views/search',
+	'../../test/views/result'
 ];
 
 require(tests, function() {

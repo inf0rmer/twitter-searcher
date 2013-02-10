@@ -5,10 +5,10 @@ define([
 	'use!underscore',
 	'jquery'
 ], function(Backbone, _, $) {
-	var SuperView,
+	var BaseView,
 		tplCache = {};
 
-	SuperView = Backbone.SuperView = Backbone.View.extend({
+	BaseView = Backbone.BaseView = Backbone.View.extend({
 		template: '<div></div>',
 
 		// ### 'elements'
@@ -194,5 +194,5 @@ define([
 		tplCache = _.extend(tplCache, window.JST);
 	}
 
-	return SuperView;
+	return BaseView;
 });
