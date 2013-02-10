@@ -4,13 +4,17 @@ define([
 	'models/search'
 ], function(Backbone, _, Search) {
 
-	return Backbone.Collection.extend({
+	var Searches = Backbone.Collection.extend({
 
 		storeKey: 'searches',
 
 		model: Search,
 
-		save: function() {
+		comparator: function(search) {
+			return -search.get('time');
+		},
+
+		save: function(search) {
 			/* TODO use shim instead */
 			window.localStorage.setItem(this.storeKey, window.JSON.stringify(this.toJSON()));
 		},
@@ -25,4 +29,18 @@ define([
 			_.each(searches, _.bind(this.add, this));
 		}
 	});
+
+	// Prevent adding duplicates
+	Searches.prototype.add = function(search) {
+		var isDupe = this.any(function(_search) {
+			var term = (!_.isUndefined(search.get)) ? search.get('term') : search.term;
+			return _search.get('term') === term;
+		});
+
+		if (!isDupe) {
+			Backbone.Collection.prototype.add.call(this, search);
+		}
+	};
+
+	return Searches;
 });

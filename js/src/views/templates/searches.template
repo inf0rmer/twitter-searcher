@@ -1,0 +1,5 @@
+<div class="dropdown">
+	<a class="dropdown-toggle" data-bypass="true" data-toggle="dropdown" href="#">Recent Searches</a>
+	<ul class="dropdown-menu js-recentSearches" role="menu">
+	</ul>
+</div>

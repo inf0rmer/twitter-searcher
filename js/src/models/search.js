@@ -9,7 +9,8 @@ define([
 	return Backbone.Model.extend({
 		defaults: function() {
 			return {
-				time: time()
+				time: time(),
+				term: 'Godzilla'
 			};
 		},
 

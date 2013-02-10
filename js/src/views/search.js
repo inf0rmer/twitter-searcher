@@ -43,7 +43,7 @@ define([
 
 		_updateVal: function(term) {
 			if (!term) {return;}
-			this.inputElement.val(term);
+			this.inputElement.val(decodeURIComponent(term));
 		}
 	});
 });

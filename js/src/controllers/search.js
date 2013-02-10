@@ -10,8 +10,9 @@ define([
 	'collections/results',
 
 	'views/results',
+	'views/searches',
 	'views/search'
-], function($, Controller, app, Search, Searches, Results, ResultsView, SearchView) {
+], function($, Controller, app, Search, Searches, Results, ResultsView, RecentSearchesView, SearchView) {
 	return function() {
 		var update,
 			searches = new Searches(),
@@ -28,22 +29,25 @@ define([
 
 			searchForm = SearchController.addView(SearchView, {}, '[data-widget="search"]'),
 			searchResults = SearchController.addView(ResultsView, {
-				collection: results,
+				collection: results
+			}, '[data-widget="results"]'),
+			recentSearches = SearchController.addView(RecentSearchesView, {
+				collection: searches,
 				currentSearch: function() {
 					return app.get('currentSearch');
 				}
-			}, '[data-widget="results"]');
+			}, '[data-widget="search"]');
 
 		update = function(term) {
 			var dfd = $.Deferred(),
 				currentTerm = app.get('currentSearch'),
 				search;
 
-			app.set('currentSearch', term);
-
 			if (term) {
 				searchForm.trigger('updateVal', term);
-				search = new Search({term: term});
+				app.set('currentSearch', term);
+				search = new Search({term: decodeURIComponent(term)});
+				searches.add(search);
 
 				results.fetch({
 					data: {
@@ -62,6 +66,7 @@ define([
 		};
 
 		searchForm.on('search', update);
+		searches.fetch();
 
 		return SearchController;
 	};

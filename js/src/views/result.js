@@ -19,6 +19,8 @@ define([
 
 		initialize: function() {
 			this.bindTo(this.model, 'change', this.render);
+			this.bindTo(this.model, 'remove', this.destroy);
+
 			this.bindTo(this.model, 'selected', function() {
 				this._setSelected();
 			});

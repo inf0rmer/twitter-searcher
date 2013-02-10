@@ -9,6 +9,16 @@ require([
 	$(function() {
 		app.router = new Router();
 		window.APP = app;
-		Backbone.history.start();
+		Backbone.history.start({pushState: true});
+
+		$(document).on('click', 'a:not([data-bypass])', function (evt) {
+			var href = $(this).attr('href'),
+				protocol = this.protocol + '//';
+
+			if (href.slice(protocol.length) !== protocol) {
+				evt.preventDefault();
+				app.router.navigate(href, true);
+			}
+		});
 	});
 });
