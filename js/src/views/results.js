@@ -8,7 +8,7 @@ define([
 	return View.extend({
 		template: template,
 
-		elements: ['list'],
+		elements: ['list', 'loadMore'],
 
 		className: 'nav nav-list',
 
@@ -46,9 +46,7 @@ define([
 
 			this.listElement.prepend('<li class="nav-header">Results</li>');
 
-			if (this.collection._nextPage) {
-				this.listElement.find('[data-action="load-more"]').show();
-			}
+			this.loadMoreElement.removeClass('hide');
 		}
 	});
 });

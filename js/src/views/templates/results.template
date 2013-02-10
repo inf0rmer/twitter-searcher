@@ -2,5 +2,5 @@
 	<ul class="nav nav-sidebar js-list">
 		<li class="nav-header">Search Results</li>
 	</ul>
-	<button class="btn" data-action="load-more">Load More</button>
+	<button class="btn hide js-loadMore" data-action="load-more"><i class="icon-chevron-down"></i>Load More Results</button>
 </nav>

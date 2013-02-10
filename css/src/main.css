@@ -6,26 +6,85 @@ body {
   float: right;
 }
 
-.nav-list .result-item {
+[data-widget="search"] {
+  margin-right: 20px;
+}
+
+[data-widget="search"] form {
+  margin: 5px 0;
+}
+
+[data-widget="search"] form .btn-primary {
+  margin: 0;
+}
+
+[data-widget="search"] form .search-query {
+  opacity: 0.5;
+  -webkit-transition: opacity 0.2s ease;
+     -moz-transition: opacity 0.2s ease;
+       -o-transition: opacity 0.2s ease;
+          transition: opacity 0.2s ease;
+}
+
+[data-widget="search"] form .search-query:hover {
+  opacity: 0.8;
+}
+
+[data-widget="search"] form .search-query:focus {
+  opacity: 1;
+}
+
+[data-widget="recent-searches"] {
+  margin-top: 7px;
+}
+
+[data-widget="recent-searches"] .btn-group {
+  margin: 0;
+}
+
+[data-widget="recent-searches"] .btn-group .dropdown-menu {
+  font-size: 12px;
+}
+
+[data-widget="recent-searches"] .btn-group .dropdown-menu a:hover .muted {
+  color: #cceeff;
+}
+
+[data-widget="results"] [data-action="load-more"] {
+  width: 100%;
+}
+
+[data-widget="results"] .result-item {
   display: block;
 }
 
-.nav-list .result-item a {
+[data-widget="results"] .result-item a {
   display: block;
   padding: 10px 5px;
   margin: 0;
+  box-sizing: border-box;
 }
 
-.nav-list .result-item a:hover {
-  background-color: transparent;
+[data-widget="results"] .result-item a:hover {
+  color: white;
+  background-color: #0088cc;
 }
 
-.nav-list .result-item h1 {
-  margin: 0;
+[data-widget="results"] .result-item a:hover .muted {
+  color: #cceeff;
+}
+
+[data-widget="results"] .result-item .user-picture {
+  width: 80%;
+  border: 4px solid white;
+}
+
+[data-widget="results"] .result-item h1 {
+  margin: 8px 0 0 0;
   font-size: 12px;
   line-height: 14px;
 }
 
-.nav-list .result-item:nth-child(2n) {
+[data-widget="results"] .result-item:nth-child(2n) {
   background-color: #eee;
 }

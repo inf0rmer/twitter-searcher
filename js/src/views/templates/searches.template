@@ -1,5 +1,6 @@
-<div class="dropdown">
-	<a class="dropdown-toggle" data-bypass="true" data-toggle="dropdown" href="#">Recent Searches</a>
-	<ul class="dropdown-menu js-recentSearches" role="menu">
-	</ul>
-</div>
+<a class="btn dropdown-toggle btn-small" data-bypass="true" data-toggle="dropdown" href="#">
+	View Past Searches
+	<span class="caret"></span>
+</a>
+<ul class="dropdown-menu js-recentSearches" role="menu">
+</ul>

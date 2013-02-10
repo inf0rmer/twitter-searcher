@@ -36,7 +36,7 @@ define([
 				currentSearch: function() {
 					return app.get('currentSearch');
 				}
-			}, '[data-widget="search"]');
+			}, '[data-widget="recent-searches"]');
 
 		update = function(term) {
 			var dfd = $.Deferred(),

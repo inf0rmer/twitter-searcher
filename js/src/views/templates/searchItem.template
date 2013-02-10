@@ -1,3 +1,7 @@
 <% if (current) { %><li class="active"><% } else { %><li><% } %>
-	<a href="/search/<%= term %>" data-term="<%= term %>" role="menuitem" tabindex="-1"><%= term %></a>
+	<a href="/search/<%= term %>" data-term="<%= term %>" role="menuitem" tabindex="-1">
+		<%= term %>
+		<br />
+		<small class="muted"><%= time_ago %></small>
+	</a>
 </li>

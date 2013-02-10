@@ -71,7 +71,8 @@ module.exports = function(grunt) {
 				suite: false,
 				teardown: false,
 				test: false,
-				mocha: false
+				mocha: false,
+				humanized_time_span: false
 			}
 		},
 		uglify: {}

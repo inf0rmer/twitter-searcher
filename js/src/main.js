@@ -4,6 +4,7 @@ require([
 	'router',
 	'models/app',
 	'lib/console',
+	'lib/humanized_time_span',
 	'use!bootstrap'
 ], function(Backbone, $, Router, app) {
 	$(function() {

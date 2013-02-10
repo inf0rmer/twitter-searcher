@@ -1,3 +1,11 @@
-<a href="#">
-	<h1>@<%= from_user %></h1>
-</a>
+<article>
+	<a href="#" class="row-fluid">
+		<div class="span3 thumbnal">
+			<img class="user-picture img-circle" src="<%= profile_image_url %>" alt="@<%= from_user %>" />
+		</div>
+		<header class="span9">
+			<h1>@<%= from_user %></h1>
+			<small class="muted">Tweeted <time><%= time_ago %></time></small>
+		</header>
+	</a>
+</article>

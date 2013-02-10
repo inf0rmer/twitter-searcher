@@ -10,6 +10,8 @@ define([
 
 		itemTemplate: _.template(itemTemplate),
 
+		className: 'btn-group',
+
 		elements: ['recentSearches'],
 
 		events: {
@@ -50,6 +52,7 @@ define([
 
 				if (data.term) {
 					data.current = data.term === currentSearch;
+					data.time_ago = humanized_time_span(data.time);
 					return tpl(data);
 				}
 

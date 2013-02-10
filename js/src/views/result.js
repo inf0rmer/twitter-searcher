@@ -17,6 +17,15 @@ define([
 
 		_selected: false,
 
+		// Override the serialize function so that we can transform the data
+		serialize: function() {
+			var data = View.prototype.serialize.call(this, arguments);
+
+			data.time_ago = humanized_time_span(new Date(data.created_at));
+
+			return data;
+		},
+
 		initialize: function() {
 			this.bindTo(this.model, 'change', this.render);
 			this.bindTo(this.model, 'remove', this.destroy);
