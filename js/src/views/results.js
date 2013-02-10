@@ -2,9 +2,9 @@ define([
 	'use!underscore',
 	'jquery',
 	'views/base',
-	'text!views/templates/results.template',
-	'text!views/templates/result.template'
-], function(_, $, View, template, itemTemplate) {
+	'views/result',
+	'text!views/templates/results.template'
+], function(_, $, View, ResultView, template) {
 	return View.extend({
 		template: template,
 
@@ -22,8 +22,6 @@ define([
 			this.bindTo(this.collection, 'fetching', function() {
 				this._empty();
 			});
-
-			this.itemTemplate = _.template(itemTemplate);
 		},
 
 		loadMore: function(evt) {
@@ -36,24 +34,17 @@ define([
 		},
 
 		_addOne: function(model) {
-			var tpl = this.itemTemplate,
-			html = tpl(model.toJSON());
+			var view = new ResultView({model: model});
 
-			this.listElement.append(html);
+			this.listElement.append(view.render().el);
 		},
 
 		_addAll: function() {
-			var tpl = this.itemTemplate,
-			html = '<li class="nav-header">Results</li>';
-
 			this.listElement.find('.loading').remove();
 
-			this.collection.each(function(item) {
-				var data = item.toJSON();
-				html += tpl(data);
-			});
+			this.collection.each(this._addOne, this);
 
-			this.listElement.append(html);
+			this.listElement.prepend('<li class="nav-header">Results</li>');
 
 			if (this.collection._nextPage) {
 				this.listElement.find('[data-action="load-more"]').show();

@@ -1,18 +1,14 @@
 var tests = [
-	/*
-	'../../test/views/base',
-	'../../test/views/searchForm',
-	'../../test/views/results',
-	'../../test/views/recentSearches',
-
-	'../../test/collections/searches',
-	'../../test/collections/searchData',
-
 	'../../test/models/app',
-	'../../test/models/search',
-	*/
+	'../../test/models/result',
+
+	'../../test/collections/results',
+
 	'../../test/controllers/base',
-	'../../test/controllers/search'
+	'../../test/controllers/search',
+
+	'../../test/views/base',
+	'../../test/views/search'
 ];
 
 require(tests, function() {

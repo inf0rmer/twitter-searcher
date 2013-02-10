@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 				'Bruno Abrantes; Licensed MIT */'
 		},
 		lint: {
-			files: ['grunt.js', 'js/src/*.js', 'js/src/!(lib)**/*.js']
+			files: ['grunt.js', 'js/src/*.js', 'js/src/!(lib)**/*.js', 'test/*.js', 'test/!(lib)**/*.js']
 		},
 		recess: {
 			dev: {
@@ -51,7 +51,8 @@ module.exports = function(grunt) {
 				undef: true,
 				boss: true,
 				eqnull: true,
-				browser: true
+				browser: true,
+				jquery: true
 			},
 			globals: {
 				require: false,
@@ -63,6 +64,7 @@ module.exports = function(grunt) {
 				describe: false,
 				before: false,
 				beforeEach: false,
+				afterEach: false,
 				it: false,
 				setup: false,
 				suite: false,

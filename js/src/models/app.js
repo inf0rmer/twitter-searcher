@@ -1,7 +1,7 @@
 define([
 	'use!backbone'
-], function(B) {
-	var app = new B.Model({
+], function(Backbone) {
+	var app = new Backbone.Model({
 		currentSearch : null
 	});
 

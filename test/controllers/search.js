@@ -1,5 +1,5 @@
 define([
-	'controllers/search',
+	'controllers/search'
 ], function(Search) {
 	// Because we're using JSONP we need to ignore globals
 	mocha.options.ignoreLeaks = true;
@@ -16,7 +16,7 @@ define([
 			mainbar = $('<div data-widget="search" class="pull-left"></div>').appendTo(el);
 			sidebar = $('<div class="span3" data-widget="results"></div>').appendTo(el);
 
-			s = Search();
+			s = new Search();
 			s.app.router = {
 				navigate : function(dest) {
 					navigatedTo = dest;

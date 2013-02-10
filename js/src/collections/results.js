@@ -1,8 +1,9 @@
 define([
 	'use!backbone',
 	'jquery',
-	'collections/live'
-], function(Backbone, $, LiveCollection){
+	'collections/live',
+	'models/result'
+], function(Backbone, $, LiveCollection, Result){
 
 	var endpoint = "http://search.twitter.com/search.json";
 
@@ -11,9 +12,11 @@ define([
 
 		_page: 1,
 
+		model: Result,
+
 		url: function() {
 			var term = encodeURIComponent(this.term);
-			return endpoint + '?q='+ term +'&rpp='+ this._numberOfResults +'&page='+ this._page +'&include_entities=true&result_type=mixed';
+			return endpoint + '?q='+ term +'&rpp='+ this._numberOfResults +'&page='+ this._page +'&include_entities=false&result_type=mixed';
 		},
 
 		fetch: function(options) {
