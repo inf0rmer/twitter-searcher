@@ -4,7 +4,7 @@ define([
 	'views/base'
 ], function(_, $, View) {
 	return View.extend({
-		template: 'js/srcviews/templates/searches.template',
+		template: 'js/src/views/templates/searches.template',
 
 		itemTemplate: window.JST['js/src/views/templates/searchItem.template'],
 
