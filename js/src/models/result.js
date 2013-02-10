@@ -13,6 +13,16 @@ define([
 			"text": "Facehuggers are man's best friends."
 		},
 
-		selected: false
+		initialize: function() {
+			var self = this;
+
+			this.on('selected', function() {
+				Backbone.trigger('result/selected', self);
+			});
+
+			this.on('unselected', function() {
+				Backbone.trigger('result/unselected', self);
+			});
+		}
 	});
 });

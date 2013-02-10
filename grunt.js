@@ -55,6 +55,7 @@ module.exports = function(grunt) {
 				jquery: true
 			},
 			globals: {
+				Backbone: false,
 				require: false,
 				define: false,
 				requirejs: false,

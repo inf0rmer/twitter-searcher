@@ -15,29 +15,35 @@ define([
 			'click': 'toggleSelected'
 		},
 
+		_selected: false,
+
 		initialize: function() {
 			this.bindTo(this.model, 'change', this.render);
+			this.bindTo(this.model, 'selected', function() {
+				this._setSelected();
+			});
+			this.bindTo(this.model, 'unselected', function() {
+				this._unsetSelected();
+			});
 		},
 
 		_setSelected: function() {
-			this.model._selected = true;
+			this._selected = true;
 			this.$el.addClass('selected');
-			this.trigger('selected', this.model);
 		},
 
 		_unsetSelected: function() {
-			this.model._selected = false;
+			this._selected = false;
 			this.$el.removeClass('selected');
-			this.trigger('unselected', this.model);
 		},
 
 		toggleSelected: function() {
-			var selected = this.model._selected;
+			var selected = this._selected;
 
 			if (selected) {
-				this._unsetSelected();
+				this.model.trigger('unselected');
 			} else {
-				this._setSelected();
+				this.model.trigger('selected');
 			}
 		}
 	});

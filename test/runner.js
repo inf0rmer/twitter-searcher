@@ -9,6 +9,7 @@ var tests = [
 
 	'../../test/views/base',
 	'../../test/views/search',
+	'../../test/views/results',
 	'../../test/views/result'
 ];
 

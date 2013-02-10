@@ -39,5 +39,31 @@ define([
 		it('Should have a text attribute', function() {
 			expect(result.get('text')).not.to.be(undef);
 		});
+
+		it('Should trigger an app-wide event when it is selected', function() {
+			var flag = false;
+			Backbone.on('result/selected', function(model) {
+				if (model.cid === result.cid) {
+					flag = true;
+				}
+			});
+
+			result.trigger('selected');
+
+			expect(flag).to.be(true);
+		});
+
+		it('Should trigger an app-wide event when it is unselected', function() {
+			var flag = false;
+			Backbone.on('result/unselected', function(model) {
+				if (model.cid === result.cid) {
+					flag = true;
+				}
+			});
+
+			result.trigger('unselected');
+
+			expect(flag).to.be(true);
+		});
 	});
 });
