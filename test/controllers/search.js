@@ -47,6 +47,20 @@ define([
 			searchForm.trigger('search', 'kittens');
 		});
 
+		it('should update the page title when the search form announces a search', function(done) {
+			var searchFormEl = $('.form-search').parent(),
+				searchForm = _.filter(s.views, function(v) {
+					return v.$el[0] === searchFormEl[0];
+				})[0];
+
+			s.results.on('change', function() {
+				expect(window.document.title).to.be('Popularity Contest - Searching for "kittens"');
+				done();
+			});
+
+			searchForm.trigger('search', 'kittens');
+		});
+
 		describe("update", function() {
 			it("should update the page using the new search term", function(done) {
 				var dfd = s.update({ term : 'testing' });

@@ -15,6 +15,7 @@ define([
 ], function($, Controller, app, Search, Searches, Results, ResultsView, RecentSearchesView, SearchView) {
 	return function() {
 		var update,
+			titlePattern = 'Popularity Contest - Searching for "{{term}}"',
 			searches = new Searches(),
 			results = new Results(),
 			SearchController = new Controller({
@@ -48,6 +49,8 @@ define([
 				app.set('currentSearch', term);
 				search = new Search({term: decodeURIComponent(term)});
 				searches.add(search);
+
+				window.document.title = titlePattern.replace('{{term}}', term);
 
 				results.fetch({
 					data: {
