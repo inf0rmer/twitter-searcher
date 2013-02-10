@@ -38,10 +38,6 @@ define([
 		_update: function() {
 			this.collection.sort();
 
-			if (!this.collection.length) {
-				return;
-			}
-
 			var tpl = this.itemTemplate,
 				currentSearch = this.options.currentSearch(),
 				searches,
