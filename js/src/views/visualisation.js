@@ -8,6 +8,8 @@ define([
 
 		tagName: 'section',
 
+		elements: ['message'],
+
 		results: [],
 
 		initialize: function() {
@@ -17,6 +19,17 @@ define([
 			this.results = [];
 
 			this.options.limit = this.options.limit || 5;
+		},
+
+		afterRender: function() {
+			this._updateCounter();
+		},
+
+		serialize: function() {
+			var data = View.prototype.serialize.call(this, arguments);
+			data.limit = this.options.limit;
+
+			return data;
 		},
 
 		addResult: function(model) {
@@ -39,12 +52,21 @@ define([
 				Backbone.trigger('result/unselected', toUnselect);
 				toUnselect.trigger('unselected');
 			}
+
+			this._updateCounter();
 		},
 
 		removeResult: function(model) {
 			this.results = _.reject(this.results, function(m) {
 				return m.cid === model.cid;
 			});
+
+			this._updateCounter();
+		},
+
+		_updateCounter: function() {
+			var tpl = window.JST['js/src/views/templates/visualisationCounter.template'];
+			this.messageElement.html(tpl(this.serialize()));
 		}
 	});
 });

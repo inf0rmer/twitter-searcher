@@ -65,7 +65,27 @@ return __p;
 this["JST"]["js/src/views/templates/visualisation.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="alert alert-info">\n\tChoose <span class="js-number badge badge-info">5</span> search results and compare them!\n</div>\n<div class="result-holder well">\n</div>';
+__p+='<div class="alert alert-info js-message">\n</div>\n<div class="result-holder well">\n</div>';
+}
+return __p;
+};
+
+this["JST"]["js/src/views/templates/visualisationCounter.template"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='';
+ number = limit - results.length 
+;__p+='\n';
+ if (number > 0) {
+;__p+='\n\tChoose <span class="js-number badge badge-info">\n\t\t'+
+( limit-results.length )+
+'\n\t</span>\n\n\t';
+ if (number === 1) { print('more search result') } else { print('search results') } 
+;__p+=' and compare them!\n';
+ } else { 
+;__p+='\n\tNow your tweets fight to the death! Choose others to replace the fallen heroes!\'\n';
+ } 
+;__p+='';
 }
 return __p;
 };

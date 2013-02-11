@@ -1,5 +1,4 @@
-<div class="alert alert-info">
-	Choose <span class="js-number badge badge-info">5</span> search results and compare them!
+<div class="alert alert-info js-message">
 </div>
 <div class="result-holder well">
 </div>

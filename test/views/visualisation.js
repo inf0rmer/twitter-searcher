@@ -57,5 +57,39 @@ define([
 
 			expect(visualisation.results.length).to.be(1);
 		});
+
+		it('should print its limit in the info message', function() {
+			expect(el.find('.js-number').text()).to.contain(visualisation.options.limit);
+		});
+
+		it('should update the counter when a result is added', function() {
+			var aResult = new Result();
+			Backbone.trigger('result/selected', aResult);
+
+			expect(el.find('.js-number').text()).to.contain(visualisation.options.limit - visualisation.results.length);
+		});
+
+		it('should update the counter when a result is removed', function() {
+			var aResult = new Result();
+			Backbone.trigger('result/selected', aResult);
+
+			expect(el.find('.js-number').text()).to.contain(visualisation.options.limit - visualisation.results.length);
+
+			Backbone.trigger('result/unselected', aResult);
+
+			expect(el.find('.js-number').text()).to.contain(visualisation.options.limit - visualisation.results.length);
+		});
+
+		it('should show an alternate message on the counter when the limit is reached', function() {
+			visualisation.destroy();
+			visualisation = new Visualisation({
+				limit: 1
+			}).render().placeAt(el);
+
+			var aResult = new Result();
+			Backbone.trigger('result/selected', aResult);
+
+			expect(el.find('.js-message').text()).to.contain('Now your tweets fight to the death!');
+		});
 	});
 });
