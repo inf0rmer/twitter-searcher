@@ -1,4 +1,4 @@
 <div class="alert alert-info js-message">
 </div>
-<div class="result-holder well">
+<div class="result-holder well js-resultHolder">
 </div>

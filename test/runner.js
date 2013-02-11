@@ -3,6 +3,7 @@ var tests = [
 
 	'../../test/models/app',
 	'../../test/models/result',
+	'../../test/models/user',
 
 	'../../test/collections/searches',
 	'../../test/collections/results',
@@ -15,7 +16,8 @@ var tests = [
 	'../../test/views/searches',
 	'../../test/views/results',
 	'../../test/views/result',
-	'../../test/views/visualisation'
+	'../../test/views/visualisation',
+	'../../test/views/resultDetail'
 ];
 
 require(tests, function() {

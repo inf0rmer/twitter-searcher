@@ -1,16 +1,20 @@
 define([
 	'use!underscore',
 	'jquery',
-	'views/base'
-], function(_, $, View) {
+	'models/user',
+	'views/base',
+	'views/resultDetail'
+], function(_, $, User, View, ResultDetailView) {
 	return View.extend({
 		template: 'js/src/views/templates/visualisation.template',
 
 		tagName: 'section',
 
-		elements: ['message'],
+		elements: ['message', 'resultHolder'],
 
 		results: [],
+
+		_resultViews: [],
 
 		initialize: function() {
 			this.bindTo(Backbone, 'result/selected', this.addResult);
@@ -18,7 +22,7 @@ define([
 
 			this.results = [];
 
-			this.options.limit = this.options.limit || 5;
+			this.options.limit = this.options.limit || 2;
 		},
 
 		afterRender: function() {
@@ -54,6 +58,7 @@ define([
 			}
 
 			this._updateCounter();
+			this._addResultView(model);
 		},
 
 		removeResult: function(model) {
@@ -62,11 +67,41 @@ define([
 			});
 
 			this._updateCounter();
+			this._removeResultView(model);
 		},
 
 		_updateCounter: function() {
 			var tpl = window.JST['js/src/views/templates/visualisationCounter.template'];
 			this.messageElement.html(tpl(this.serialize()));
+		},
+
+		_addResultView: function(model) {
+			var view = new ResultDetailView({
+				model: new User({
+					screen_name: model.get('from_user')
+				}),
+				tweet_created_at: model.get('created_at'),
+				tweet_model_cid: model.cid,
+				tweet_text: model.get('text')
+			});
+
+			// Add to views cache array
+			this._resultViews.push(view);
+
+			// Attach to element
+			this.resultHolderElement.append(view.el);
+		},
+
+		_removeResultView: function(model) {
+			this._resultViews = _.reject(this._resultViews, function(view) {
+				// Let's also destroy the view
+				if (model.cid === view.options.tweet_model_cid) {
+					view.destroy();
+					return true;
+				}
+
+				return false;
+			});
 		}
 	});
 });

@@ -3,7 +3,7 @@ this["JST"] = this["JST"] || {};
 this["JST"]["js/src/views/templates/result.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<article>\n\t<a href="#" class="row-fluid" data-bypass="true">\n\t\t<div class="span3 thumbnal">\n\t\t\t<img class="user-picture img-circle" src="'+
+__p+='<article>\n\t<a href="#" class="row-fluid" data-bypass="true">\n\t\t<div class="span3">\n\t\t\t<img class="user-picture img-circle" src="'+
 ( profile_image_url )+
 '" alt="@'+
 ( from_user )+
@@ -12,6 +12,30 @@ __p+='<article>\n\t<a href="#" class="row-fluid" data-bypass="true">\n\t\t<div c
 '</h1>\n\t\t\t<small class="muted">Tweeted <time>'+
 ( time_ago )+
 '</time></small>\n\t\t</header>\n\t</a>\n</article>';
+}
+return __p;
+};
+
+this["JST"]["js/src/views/templates/resultDetail.template"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='<div class="row-fluid">\n\t<header>\n\t\t<a href="http://twitter.com/'+
+( screen_name )+
+'" class="pull-left screen-name">\n\t\t\t<img class="user-picture img-circle pull-left" src="http://api.twitter.com/1/users/profile_image/'+
+( screen_name )+
+'?size=bigger" alt="@'+
+( screen_name )+
+'" />\n\t\t\t<h1 class="pull-left">@'+
+( screen_name )+
+'</h1>\n\t\t</a>\n\t\t<h2 class="pull-right followers badge badge-info">'+
+( followers_count_pretty )+
+' follower';
+ if (followers_count > 1) { print('s') } 
+;__p+='</h2>\n\t</header>\n\n\t<blockquote class="tweet-text">\n\t\t<p>'+
+( tweet_text )+
+'</p>\n\t</blockquote>\n\n\t<footer class="meta">\n\t\t<small class="muted">Tweeted <time>'+
+( time_ago )+
+'</time></small>\n\t</footer>\n</div>';
 }
 return __p;
 };
@@ -65,7 +89,7 @@ return __p;
 this["JST"]["js/src/views/templates/visualisation.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="alert alert-info js-message">\n</div>\n<div class="result-holder well">\n</div>';
+__p+='<div class="alert alert-info js-message">\n</div>\n<div class="result-holder well js-resultHolder">\n</div>';
 }
 return __p;
 };

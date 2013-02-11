@@ -1,6 +1,6 @@
 <article>
 	<a href="#" class="row-fluid" data-bypass="true">
-		<div class="span3 thumbnal">
+		<div class="span3">
 			<img class="user-picture img-circle" src="<%= profile_image_url %>" alt="@<%= from_user %>" />
 		</div>
 		<header class="span9">

@@ -6,6 +6,10 @@ body {
   float: right;
 }
 
+.user-picture.img-circle {
+  border: 4px solid white;
+}
+
 [data-widget="search"] {
   margin-right: 20px;
 }
@@ -52,6 +56,7 @@ body {
 
 [data-widget="results"] [data-action="load-more"] {
   width: 100%;
+  margin-top: 10px;
 }
 
 [data-widget="results"] .wrapper {
@@ -69,6 +74,10 @@ body {
   padding: 10px 5px;
   margin: 0;
   box-sizing: border-box;
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
 }
 
 [data-widget="results"] .result-item a:hover {
@@ -82,7 +91,10 @@ body {
 
 [data-widget="results"] .result-item .user-picture {
   width: 40px;
-  border: 4px solid white;
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
 }
 
 [data-widget="results"] .result-item h1 {
@@ -96,7 +108,7 @@ body {
 }
 
 [data-widget="results"] .result-item.selected .user-picture {
-  border-color: #0088cc;
+  border-color: #005580;
 }
 
 [data-widget="visualisation"] .result-holder {
@@ -105,4 +117,65 @@ body {
   padding: 0;
   margin: 0;
   background: #e6e6e6;
+}
+
+[data-widget="visualisation"] .result-detail {
+  padding: 10px;
+  background: #FFF;
+  box-sizing: border-box;
+}
+
+[data-widget="visualisation"] .result-detail .screen-name {
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+}
+
+[data-widget="visualisation"] .result-detail .screen-name h1 {
+  font-size: 24.5px;
+}
+
+[data-widget="visualisation"] .result-detail .screen-name .user-picture {
+  width: 50px;
+  margin: 0 10px 0 0;
+  border-color: #0088cc;
+  -webkit-transition: all 0.2s ease;
+     -moz-transition: all 0.2s ease;
+       -o-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+}
+
+[data-widget="visualisation"] .result-detail .screen-name:hover .user-picture {
+  border-color: #005580;
+}
+
+[data-widget="visualisation"] .result-detail .followers {
+  padding: 5px 10px;
+  margin: 20px 0 0 0;
+  font-size: 100%;
+}
+
+[data-widget="visualisation"] .result-detail .meta {
+  margin-left: 20px;
+}
+
+[data-widget="visualisation"] .result-detail .tweet-text {
+  position: relative;
+  padding: 15px;
+  margin: 90px 0 0.5em;
+  color: #333;
+  background: #eee;
+  border-radius: 10px;
+}
+
+[data-widget="visualisation"] .result-detail .tweet-text:after {
+  position: absolute;
+  top: -30px;
+  left: 15px;
+  display: block;
+  width: 0;
+  border: 15px solid transparent;
+  border-bottom-color: #eee;
+  content: "";
 }

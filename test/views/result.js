@@ -1,8 +1,9 @@
 define([
+	'jquery',
 	'use!backbone',
 	'models/result',
 	'views/result'
-], function(Backbone, Result, ResultView, undef){
+], function($, Backbone, Result, ResultView, undef){
 	describe('Result View', function() {
 		var el, result, resultItem;
 
