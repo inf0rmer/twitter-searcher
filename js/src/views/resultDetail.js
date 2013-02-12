@@ -14,8 +14,12 @@ define([
 		initialize: function() {
 			this.bindTo(this.model, 'change', this.render);
 			this.bindTo(this.model, 'destroy', this.destroy);
-			this.model.fetch();
 			this.bindTo(this.model, 'error', this.showError);
+
+			this.model.fetch()
+			.then(function() {
+				Backbone.trigger('visualisation/layoutSubviews');
+			});
 		},
 
 		showError: function() {
@@ -32,6 +36,14 @@ define([
 			data.followers_count_pretty = humanize.format_number(data.followers_count, 0);
 
 			return data;
+		},
+
+		destroy: function() {
+			// Give a chance for all other events to run (namely the one that will call _removeView from VisualisationView)
+			setTimeout(function() {
+				Backbone.trigger('visualisation/layoutSubviews');
+			}, 0);
+			View.prototype.destroy.call(this, arguments);
 		}
 	});
 });

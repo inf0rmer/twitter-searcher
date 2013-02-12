@@ -123,18 +123,133 @@ body {
   border-color: #005580;
 }
 
+[data-widget="visualisation"] .js-message .js-reset {
+  position: relative;
+  top: -3px;
+}
+
 [data-widget="visualisation"] .result-holder {
+  position: relative;
   width: 100%;
-  height: 509px;
+  height: 500px;
   padding: 0;
   margin: 0;
   background: #e6e6e6;
 }
 
 [data-widget="visualisation"] .result-detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   padding: 10px;
+  font-size: 12px;
   background: #FFF;
+  opacity: 0;
   box-sizing: border-box;
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+          transition: all 1s ease;
+}
+
+[data-widget="visualisation"] .result-detail.secondary blockquote,
+[data-widget="visualisation"] .result-detail.secondary .meta {
+  display: none;
+}
+
+[data-widget="visualisation"] .result-detail.secondary .followers.badge {
+  width: 100%;
+  margin-top: 0.5em;
+  font-size: 1.5em;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+[data-widget="visualisation"] .result-detail.small {
+  font-size: 8px;
+}
+
+[data-widget="visualisation"] .result-detail.small .screen-name h1 {
+  font-size: 1.8em;
+  line-height: 1.6em;
+}
+
+[data-widget="visualisation"] .result-detail.small .screen-name .user-picture {
+  width: 4em;
+}
+
+[data-widget="visualisation"] .result-detail.small .tweet-text {
+  margin-top: 5.5em;
+}
+
+[data-widget="visualisation"] .result-detail.small .tweet-text:after {
+  position: absolute;
+  top: -2em;
+  left: 0.4em;
+  display: block;
+  width: 0;
+  border: 1em solid transparent;
+  border-bottom-color: #eee;
+  content: "";
+}
+
+[data-widget="visualisation"] .result-detail.medium {
+  font-size: 10px;
+}
+
+[data-widget="visualisation"] .result-detail.medium .screen-name h1 {
+  font-size: 1.8em;
+  line-height: 1.6em;
+}
+
+[data-widget="visualisation"] .result-detail.medium .screen-name .user-picture {
+  width: 4em;
+}
+
+[data-widget="visualisation"] .result-detail.medium .tweet-text {
+  margin-top: 6.5em;
+}
+
+[data-widget="visualisation"] .result-detail.medium .tweet-text:after {
+  position: absolute;
+  top: -2em;
+  left: 1em;
+  display: block;
+  width: 0;
+  border: 1em solid transparent;
+  border-bottom-color: #eee;
+  content: "";
+}
+
+[data-widget="visualisation"] .result-detail.most-popular .followers.badge {
+  background-color: #b94a48;
+}
+
+[data-widget="visualisation"] .result-detail.most-popular .screen-name {
+  color: #b94a48;
+}
+
+[data-widget="visualisation"] .result-detail.most-popular .screen-name .user-picture {
+  border-color: #b94a48;
+}
+
+[data-widget="visualisation"] .result-detail.most-popular .screen-name:hover {
+  color: #833332;
+}
+
+[data-widget="visualisation"] .result-detail.most-popular .screen-name:hover .user-picture {
+  border-color: #833332;
+}
+
+[data-widget="visualisation"] .result-detail.most-popular .tweet-text {
+  color: #FFF;
+  background: #a74240;
+}
+
+[data-widget="visualisation"] .result-detail.most-popular .tweet-text:after {
+  border-bottom-color: #a74240;
 }
 
 [data-widget="visualisation"] .result-detail .screen-name {
@@ -145,12 +260,12 @@ body {
 }
 
 [data-widget="visualisation"] .result-detail .screen-name h1 {
-  font-size: 24.5px;
+  font-size: 2em;
 }
 
 [data-widget="visualisation"] .result-detail .screen-name .user-picture {
-  width: 50px;
-  margin: 0 10px 0 0;
+  width: 5em;
+  margin: 0 1em 0 0;
   border-color: #0088cc;
   -webkit-transition: all 0.2s ease;
      -moz-transition: all 0.2s ease;
@@ -163,31 +278,36 @@ body {
 }
 
 [data-widget="visualisation"] .result-detail .followers {
-  padding: 5px 10px;
-  margin: 20px 0 0 0;
-  font-size: 100%;
+  padding: .5em 1em;
+  margin: 2em 0 0 0;
+  font-size: 1em;
 }
 
 [data-widget="visualisation"] .result-detail .meta {
-  margin-left: 20px;
+  margin-left: 1.5em;
 }
 
 [data-widget="visualisation"] .result-detail .tweet-text {
   position: relative;
-  padding: 15px;
-  margin: 85px 0 0.5em;
+  padding: 1em;
+  margin: 8.5em 0 0.5em;
+  font-size: 1em;
   color: #333;
   background: #eee;
   border-radius: 10px;
 }
 
+[data-widget="visualisation"] .result-detail .tweet-text p {
+  font-size: 1.2em;
+}
+
 [data-widget="visualisation"] .result-detail .tweet-text:after {
   position: absolute;
-  top: -30px;
-  left: 10px;
+  top: -3em;
+  left: 1em;
   display: block;
   width: 0;
-  border: 15px solid transparent;
+  border: 1.5em solid transparent;
   border-bottom-color: #eee;
   content: "";
 }

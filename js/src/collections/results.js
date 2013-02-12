@@ -4,7 +4,7 @@ define([
 	'models/result'
 ], function(Backbone, $, Result){
 
-	var endpoint = "http://search.twitter.com/search.json";
+	var endpoint = "http://clubjudge.dev/test/fixtures/search.json";
 
 	function getRootUrl(url) {
 		return url.toString().replace(/^(.*\/\/[^\/?#]*).*$/,"$1");

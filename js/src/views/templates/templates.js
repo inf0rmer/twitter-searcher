@@ -115,11 +115,11 @@ __p+='';
  if (number === 1) { print('more search result') } else { print('search results') } 
 ;__p+=' and compare them!\n';
  } else { 
-;__p+='\n\tNow your tweets fight to the death! Choose others to replace the fallen heroes!\'\n';
+;__p+='\n\tNow your tweets fight to the death! Choose others to replace the fallen heroes!\n';
  } 
 ;__p+='\n';
  if (number < limit) {
-;__p+='\n\t<button class="btn btn-small btn-danger js-reset">Reset!</button>\n';
+;__p+='\n\t<button class="btn btn-small btn-info js-reset pull-right">Reset!</button>\n';
  } 
 ;__p+='';
 }
