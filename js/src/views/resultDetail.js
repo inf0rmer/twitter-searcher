@@ -1,8 +1,9 @@
 define([
 	'jquery',
 	'views/base',
+	'views/error',
 	'lib/humanizer'
-], function($, View, humanize) {
+], function($, View, ErrorView, humanize) {
 	return View.extend({
 		template: 'js/src/views/templates/resultDetail.template',
 
@@ -13,7 +14,12 @@ define([
 		initialize: function() {
 			this.bindTo(this.model, 'change', this.render);
 			this.bindTo(this.model, 'destroy', this.destroy);
-			this.model.fetch();
+			this.model.fetch()
+			.fail(_.bind(this.showError, this));
+		},
+
+		showError: function() {
+			new ErrorView().render().placeAt(this.$el, 'only');
 		},
 
 		serialize: function() {

@@ -1,5 +1,13 @@
 this["JST"] = this["JST"] || {};
 
+this["JST"]["js/src/views/templates/error.template"] = function(obj){
+var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
+with(obj||{}){
+__p+='An error occurred, please try again later.';
+}
+return __p;
+};
+
 this["JST"]["js/src/views/templates/result.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){

@@ -22,7 +22,7 @@ define([
 			if (this._nextPage !== null) {
 				return this._nextPage;
 			}
-			return endpoint + '?q='+ term +'&rpp='+ this._numberOfResults +'&include_entities=false&result_type=recent';
+			return getRootUrl(window.location.href) + '/proxy.php?url=' + encodeURIComponent(endpoint + '?q='+ term +'&rpp='+ this._numberOfResults +'&include_entities=false&result_type=recent');
 		},
 
 		fetch: function(options) {
@@ -43,12 +43,10 @@ define([
 				this.trigger('fetching');
 			}
 
-			fetch(options).then(_.bind(function() {
+			return fetch(options).then(_.bind(function() {
 				this.trigger('change');
 				dfd.resolve();
 			}, this));
-
-			return dfd;
 		},
 
 		next: function() {

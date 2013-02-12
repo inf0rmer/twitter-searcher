@@ -12,6 +12,7 @@ require([
 		window.APP = app;
 		Backbone.history.start({pushState: true});
 
+		// HTML5 pushState links
 		$(document).on('click', 'a:not([data-bypass])', function (evt) {
 			var href = $(this).attr('href'),
 				protocol = this.protocol + '//';

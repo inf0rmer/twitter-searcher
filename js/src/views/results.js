@@ -2,8 +2,9 @@ define([
 	'use!underscore',
 	'jquery',
 	'views/base',
-	'views/result'
-], function(_, $, View, ResultView) {
+	'views/result',
+	'views/error'
+], function(_, $, View, ResultView, ErrorView) {
 	return View.extend({
 		template: 'js/src/views/templates/results.template',
 
@@ -23,6 +24,11 @@ define([
 			});
 			this.bindTo(this.collection, 'loadingMore', this._setLoadingMore);
 			this.bindTo(this.collection, 'change', this._unsetLoadingMore);
+			this.bindTo(this.collection, 'error', this.showError);
+		},
+
+		showError: function() {
+			new ErrorView().render().placeAt(this.$el, 'only');
 		},
 
 		loadMore: function(evt) {

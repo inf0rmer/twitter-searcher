@@ -1,7 +1,7 @@
 define([
 	'use!backbone'
 ], function(Backbone) {
-	var endpoint = (window.mocha) ? window.location.protocol + '//' + window.location.hostname + '/test/fixtures/user.json' : 'http://api.twitter.com/1/users/show.json';
+	var endpoint = (window.mocha) ? window.location.protocol + '//' + window.location.hostname + '/test/fixtures/user.json' : 'http://api.twitter.com/1/users/showasd.json';
 
 	function getRootUrl(url) {
 		return url.toString().replace(/^(.*\/\/[^\/?#]*).*$/,"$1");
@@ -10,7 +10,7 @@ define([
 	return Backbone.Model.extend({
 
 		url: function() {
-			return endpoint + '?screen_name=' + this.get('screen_name');
+			return getRootUrl(window.location.href) + '/proxy.php?url=' + encodeURIComponent(endpoint + '?screen_name=' + this.get('screen_name'));
 		},
 
 		defaults: {
@@ -28,8 +28,7 @@ define([
 		},
 
 		fetch: function(options) {
-			var fetch = _.bind(Backbone.Model.prototype.fetch, this),
-				dfd = $.Deferred();
+			var fetch = _.bind(Backbone.Model.prototype.fetch, this);
 
 			options = options || {};
 
@@ -37,16 +36,9 @@ define([
 				dataType: (getRootUrl(window.location.href) === getRootUrl(this.url())) ? 'json' : 'jsonp'
 			});
 
-			if (!options.update) {
-				this.trigger('fetching');
-			}
-
-			fetch(options).then(_.bind(function() {
+			return fetch(options).then(_.bind(function() {
 				this.trigger('change');
-				dfd.resolve();
 			}, this));
-
-			return dfd;
 		}
 	});
 });
