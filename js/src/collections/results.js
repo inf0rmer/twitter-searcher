@@ -31,10 +31,6 @@ define([
 
 			options = options || {};
 
-			options = _.extend(options, {
-				dataType: (getRootUrl(window.location.href) === getRootUrl(this.url())) ? 'json' : 'jsonp'
-			});
-
 			if (options.data && options.data.term) {
 				this.term = options.data.term;
 			}

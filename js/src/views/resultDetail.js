@@ -14,8 +14,8 @@ define([
 		initialize: function() {
 			this.bindTo(this.model, 'change', this.render);
 			this.bindTo(this.model, 'destroy', this.destroy);
-			this.model.fetch()
-			.fail(_.bind(this.showError, this));
+			this.model.fetch();
+			this.bindTo(this.model, 'error', this.showError);
 		},
 
 		showError: function() {

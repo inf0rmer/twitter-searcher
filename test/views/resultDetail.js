@@ -25,5 +25,19 @@ define([
 			expect(el.find('.result-detail').length).to.be(1);
 		});
 
+		it('should show an error view when the request fails', function(done) {
+			user.url = function() {
+				return '/proxy.php?url=http://api.twitter.com/1/users/showasd.json';
+			};
+
+			this.timeout(5000);
+
+			user.fetch()
+			.always(function(){
+				expect(resultDetail.$el.find('.alert-danger').length).to.be(1);
+				done();
+			});
+		});
+
 	});
 });

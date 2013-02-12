@@ -1,7 +1,7 @@
 define([
 	'use!backbone'
 ], function(Backbone) {
-	var endpoint = (window.mocha) ? window.location.protocol + '//' + window.location.hostname + '/test/fixtures/user.json' : 'http://api.twitter.com/1/users/showasd.json';
+	var endpoint = (window.mocha) ? window.location.protocol + '//' + window.location.hostname + '/test/fixtures/user.json' : 'http://api.twitter.com/1/users/show.json';
 
 	function getRootUrl(url) {
 		return url.toString().replace(/^(.*\/\/[^\/?#]*).*$/,"$1");
@@ -31,10 +31,6 @@ define([
 			var fetch = _.bind(Backbone.Model.prototype.fetch, this);
 
 			options = options || {};
-
-			options = _.extend(options, {
-				dataType: (getRootUrl(window.location.href) === getRootUrl(this.url())) ? 'json' : 'jsonp'
-			});
 
 			return fetch(options).then(_.bind(function() {
 				this.trigger('change');
