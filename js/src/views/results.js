@@ -21,6 +21,8 @@ define([
 			this.bindTo(this.collection, 'fetching', function() {
 				this._empty();
 			});
+			this.bindTo(this.collection, 'loadingMore', this._setLoadingMore);
+			this.bindTo(this.collection, 'change', this._unsetLoadingMore);
 		},
 
 		loadMore: function(evt) {
@@ -34,18 +36,33 @@ define([
 
 		_addOne: function(model) {
 			var view = new ResultView({model: model});
+			//console.log('adding', model.id);
 
 			this.listElement.append(view.render().el);
 		},
 
 		_addAll: function() {
+			this._empty();
+
 			this.listElement.find('.loading').remove();
 
 			this.collection.each(this._addOne, this);
 
-			this.listElement.prepend('<li class="nav-header">Results</li>');
+			this.listElement.prepend('<li class="nav-header">Search Results</li>');
 
 			this.loadMoreElement.removeClass('hide');
+		},
+
+		_setLoadingMore: function() {
+			this.loadMoreElement
+			.attr('disabled', true)
+			.addClass('loading');
+		},
+
+		_unsetLoadingMore: function() {
+			this.loadMoreElement
+			.removeAttr('disabled')
+			.removeClass('loading');
 		}
 	});
 });

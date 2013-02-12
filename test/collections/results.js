@@ -40,5 +40,20 @@ define([
 				done();
 			});
 		});
+
+		it('should trigger a loadingMore event when fetching the next page', function(done) {
+			var flag;
+
+			this.timeout(5000);
+
+			results.on('loadingMore', function() {
+				flag = true;
+			});
+
+			results.fetch(data).then(function() {
+				expect(flag).to.be.ok();
+				done();
+			});
+		});
 	});
 });

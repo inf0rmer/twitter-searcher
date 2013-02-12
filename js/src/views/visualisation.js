@@ -22,7 +22,7 @@ define([
 
 			this.results = [];
 
-			this.options.limit = this.options.limit || 2;
+			this.options.limit = this.options.limit || 5;
 		},
 
 		afterRender: function() {

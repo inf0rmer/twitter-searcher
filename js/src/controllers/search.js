@@ -18,7 +18,7 @@ define([
 		var update,
 			titlePattern = 'Popularity Contest - Searching for "{{term}}"',
 			searches = new Searches(),
-			results = new Results(),
+			results = window.results = new Results(),
 			SearchController = new Controller({
 				name: 'search',
 				update: function(params) {

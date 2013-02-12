@@ -1,9 +1,8 @@
 define([
 	'use!backbone',
 	'jquery',
-	'collections/live',
 	'models/result'
-], function(Backbone, $, LiveCollection, Result){
+], function(Backbone, $, Result){
 
 	var endpoint = "http://search.twitter.com/search.json";
 
@@ -11,16 +10,19 @@ define([
 		return url.toString().replace(/^(.*\/\/[^\/?#]*).*$/,"$1");
 	}
 
-	return LiveCollection.extend({
+	return Backbone.Collection.extend({
 		_numberOfResults: 10,
 
-		_page: 1,
+		_nextPage: null,
 
 		model: Result,
 
 		url: function() {
 			var term = encodeURIComponent(this.term);
-			return endpoint + '?q='+ term +'&rpp='+ this._numberOfResults +'&page='+ this._page +'&include_entities=false&result_type=mixed';
+			if (this._nextPage !== null) {
+				return this._nextPage;
+			}
+			return endpoint + '?q='+ term +'&rpp='+ this._numberOfResults +'&include_entities=false&result_type=recent';
 		},
 
 		fetch: function(options) {
@@ -30,7 +32,6 @@ define([
 			options = options || {};
 
 			options = _.extend(options, {
-				diff: true,
 				dataType: (getRootUrl(window.location.href) === getRootUrl(this.url())) ? 'json' : 'jsonp'
 			});
 
@@ -51,8 +52,9 @@ define([
 		},
 
 		next: function() {
-			this._page += 1;
+			this.trigger('loadingMore');
 			this.fetch({
+				remove: false,
 				update: true
 			});
 		},
