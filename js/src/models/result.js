@@ -16,12 +16,16 @@ define([
 		initialize: function() {
 			var self = this;
 
-			this.on('selected', function() {
-				Backbone.trigger('result/selected', self);
+			this.on('selected', function(options) {
+				if (options && options.broadcast) {
+					Backbone.trigger('result/selected', self);
+				}
 			});
 
-			this.on('unselected', function() {
-				Backbone.trigger('result/unselected', self);
+			this.on('unselected', function(options) {
+				if (options && options.broadcast) {
+					Backbone.trigger('result/unselected', self);
+				}
 			});
 		}
 	});

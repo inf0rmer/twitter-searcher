@@ -30,12 +30,8 @@ define([
 			this.bindTo(this.model, 'change', this.render);
 			this.bindTo(this.model, 'remove', this.destroy);
 
-			this.bindTo(this.model, 'selected', function() {
-				this._setSelected();
-			});
-			this.bindTo(this.model, 'unselected', function() {
-				this._unsetSelected();
-			});
+			this.bindTo(this.model, 'selected', this._setSelected);
+			this.bindTo(this.model, 'unselected', this._unsetSelected);
 		},
 
 		_setSelected: function() {
@@ -52,9 +48,13 @@ define([
 			var selected = this._selected;
 
 			if (selected) {
-				this.model.trigger('unselected');
+				this.model.trigger('unselected', {
+					broadcast: true
+				});
 			} else {
-				this.model.trigger('selected');
+				this.model.trigger('selected', {
+					broadcast: true
+				});
 			}
 
 			if (evt && evt.preventDefault) {

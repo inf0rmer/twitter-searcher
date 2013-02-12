@@ -24,6 +24,8 @@ define([
 			this.bindTo(Backbone, 'result/selected', this.addResult);
 			this.bindTo(Backbone, 'result/unselected', this.removeResult);
 
+			this.bindTo(Backbone, 'result/selected result/unselected', this.layoutSubviews);
+
 			this.results = [];
 			this._resultViews = [];
 
@@ -68,7 +70,12 @@ define([
 
 		removeResult: function(model) {
 			this.results = _.reject(this.results, function(m) {
-				return m.cid === model.cid;
+				// Let the model know it was removed
+				if (m.cid === model.cid) {
+					//Backbone.trigger('result/unselected', model);
+					model.trigger('unselected');
+					return true;
+				}
 			});
 
 			this._updateCounter();
@@ -80,6 +87,13 @@ define([
 				evt.preventDefault();
 			}
 			_.each(this.results, _.bind(this.removeResult, this));
+		},
+
+		layoutSubviews: function() {
+			console.log('laying out subviews...');
+			_.each(this._resultViews, function() {
+				console.log(arguments);
+			});
 		},
 
 		_updateCounter: function() {
@@ -105,6 +119,7 @@ define([
 		},
 
 		_removeResultView: function(model) {
+			var self = this;
 			this._resultViews = _.reject(this._resultViews, function(view) {
 				// Let's also destroy the view
 				if (model.cid === view.options.tweet_model_cid) {
