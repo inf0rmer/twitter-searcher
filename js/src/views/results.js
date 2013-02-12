@@ -31,7 +31,7 @@ define([
 		},
 
 		_empty: function() {
-			this.listElement.html('<li class="nav-header loading">Loading &hellip;</li>');
+			this.listElement.html('<li class="loading"><small>Loading &hellip;</small></li>');
 		},
 
 		_addOne: function(model) {
@@ -47,8 +47,6 @@ define([
 			this.listElement.find('.loading').remove();
 
 			this.collection.each(this._addOne, this);
-
-			this.listElement.prepend('<li class="nav-header">Search Results</li>');
 
 			this.loadMoreElement.removeClass('hide');
 		},

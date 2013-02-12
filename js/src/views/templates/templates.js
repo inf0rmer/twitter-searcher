@@ -43,7 +43,7 @@ return __p;
 this["JST"]["js/src/views/templates/results.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<nav class="well sidebar">\n\t<div class="wrapper">\n\t\t<ul class="nav nav-sidebar js-list">\n\t\t\t<li class="nav-header">Search Results</li>\n\t\t</ul>\n\t</div>\n\t<button class="btn hide js-loadMore" data-action="load-more"><i class="icon-chevron-down"></i>Load More Results</button>\n</nav>';
+__p+='<nav class="well sidebar">\n\t<h2 class="nav-header">Search Results</h2>\n\t<div class="wrapper">\n\t\t<ul class="nav nav-sidebar js-list">\n\t\t</ul>\n\t</div>\n\t<button class="btn hide js-loadMore" data-action="load-more"><i class="icon-chevron-down"></i>Load More Results</button>\n</nav>';
 }
 return __p;
 };

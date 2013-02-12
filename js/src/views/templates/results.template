@@ -1,7 +1,7 @@
 <nav class="well sidebar">
+	<h2 class="nav-header">Search Results</h2>
 	<div class="wrapper">
 		<ul class="nav nav-sidebar js-list">
-			<li class="nav-header">Search Results</li>
 		</ul>
 	</div>
 	<button class="btn hide js-loadMore" data-action="load-more"><i class="icon-chevron-down"></i>Load More Results</button>

@@ -59,10 +59,22 @@ body {
   margin-top: 10px;
 }
 
+[data-widget="results"] .nav-header {
+  margin: 0;
+  text-align: center;
+}
+
 [data-widget="results"] .wrapper {
-  max-height: 500px;
+  max-height: 465px;
   overflow: scroll;
   overflow-x: hidden;
+}
+
+[data-widget="results"] .wrapper .loading {
+  font-size: 80%;
+  color: #cccccc;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 [data-widget="results"] .result-item {
