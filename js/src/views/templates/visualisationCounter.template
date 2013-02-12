@@ -1,10 +1,13 @@
 <% number = limit - results.length %>
 <% if (number > 0) {%>
 	Choose <span class="js-number badge badge-info">
-		<%= limit-results.length %>
+		<%= number %>
 	</span>
 
 	<% if (number === 1) { print('more search result') } else { print('search results') } %> and compare them!
 <% } else { %>
 	Now your tweets fight to the death! Choose others to replace the fallen heroes!'
+<% } %>
+<% if (number < limit) {%>
+	<button class="btn btn-small btn-danger js-reset">Reset!</button>
 <% } %>

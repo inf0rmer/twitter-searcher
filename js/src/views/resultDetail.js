@@ -13,7 +13,6 @@ define([
 		initialize: function() {
 			this.bindTo(this.model, 'change', this.render);
 			this.bindTo(this.model, 'destroy', this.destroy);
-
 			this.model.fetch();
 		},
 

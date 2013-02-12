@@ -1,7 +1,7 @@
 define([
 	'use!backbone'
 ], function(Backbone) {
-	var endpoint = 'http://api.twitter.com/1/users/show.json';
+	var endpoint = (window.mocha) ? window.location.protocol + '//' + window.location.hostname + '/test/fixtures/user.json' : 'http://api.twitter.com/1/users/show.json';
 
 	function getRootUrl(url) {
 		return url.toString().replace(/^(.*\/\/[^\/?#]*).*$/,"$1");

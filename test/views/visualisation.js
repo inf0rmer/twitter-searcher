@@ -91,5 +91,30 @@ define([
 
 			expect(el.find('.js-message').text()).to.contain('Now your tweets fight to the death!');
 		});
+
+		it('should clean up the results and _resultViews arrays when it is destroyed', function() {
+			visualisation.destroy();
+			expect(visualisation.results.length).to.be(0);
+			expect(visualisation._resultViews.length).to.be(0);
+		});
+
+		it('should clean up the results and _resultViews arrays when the reset button is pressed', function() {
+			visualisation.destroy();
+			visualisation = new Visualisation({
+				limit: 1
+			}).render().placeAt(el);
+
+			var aResult = new Result();
+			Backbone.trigger('result/selected', aResult);
+
+			expect(visualisation.results.length).to.be(1);
+			expect(visualisation._resultViews.length).to.be(1);
+
+			el.find('.js-reset').trigger('click');
+
+			expect(visualisation.results.length).to.be(0);
+			expect(visualisation._resultViews.length).to.be(0);
+
+		});
 	});
 });

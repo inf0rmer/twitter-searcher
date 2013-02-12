@@ -102,12 +102,16 @@ __p+='';
 ;__p+='\n';
  if (number > 0) {
 ;__p+='\n\tChoose <span class="js-number badge badge-info">\n\t\t'+
-( limit-results.length )+
+( number )+
 '\n\t</span>\n\n\t';
  if (number === 1) { print('more search result') } else { print('search results') } 
 ;__p+=' and compare them!\n';
  } else { 
 ;__p+='\n\tNow your tweets fight to the death! Choose others to replace the fallen heroes!\'\n';
+ } 
+;__p+='\n';
+ if (number < limit) {
+;__p+='\n\t<button class="btn btn-small btn-danger js-reset">Reset!</button>\n';
  } 
 ;__p+='';
 }

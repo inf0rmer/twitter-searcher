@@ -175,7 +175,7 @@ body {
 [data-widget="visualisation"] .result-detail .tweet-text {
   position: relative;
   padding: 15px;
-  margin: 90px 0 0.5em;
+  margin: 85px 0 0.5em;
   color: #333;
   background: #eee;
   border-radius: 10px;
@@ -184,7 +184,7 @@ body {
 [data-widget="visualisation"] .result-detail .tweet-text:after {
   position: absolute;
   top: -30px;
-  left: 15px;
+  left: 10px;
   display: block;
   width: 0;
   border: 15px solid transparent;

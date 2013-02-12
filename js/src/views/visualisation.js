@@ -10,7 +10,11 @@ define([
 
 		tagName: 'section',
 
-		elements: ['message', 'resultHolder'],
+		elements: ['message', 'resultHolder', 'reset'],
+
+		events: {
+			'click .js-reset': 'reset'
+		},
 
 		results: [],
 
@@ -21,6 +25,7 @@ define([
 			this.bindTo(Backbone, 'result/unselected', this.removeResult);
 
 			this.results = [];
+			this._resultViews = [];
 
 			this.options.limit = this.options.limit || 5;
 		},
@@ -70,6 +75,13 @@ define([
 			this._removeResultView(model);
 		},
 
+		reset: function(evt) {
+			if (evt) {
+				evt.preventDefault();
+			}
+			_.each(this.results, _.bind(this.removeResult, this));
+		},
+
 		_updateCounter: function() {
 			var tpl = window.JST['js/src/views/templates/visualisationCounter.template'];
 			this.messageElement.html(tpl(this.serialize()));
@@ -102,6 +114,16 @@ define([
 
 				return false;
 			});
+		},
+
+		destroy: function() {
+			this.reset();
+
+			// Reset is not guaranteed to clean up views without tweet_model_cid set
+			_.invoke(this._resultViews, 'destroy');
+			this._resultViews = [];
+
+			return View.prototype.destroy.call(this, arguments);
 		}
 	});
 });
