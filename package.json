@@ -1,0 +1,20 @@
+{
+	"name": "Popularity-Contest",
+	"version": "0.1.0",
+	"description": "Tweets fight to the death, whoever's the most popular wins!",
+	"main": "js/dist/app.min.js",
+	"devDependencies": {
+		"grunt-contrib-jst": "~0.3.2",
+		"grunt-contrib-copy": "~0.3.2",
+		"grunt-recess": "~0.1.0",
+		"grunt-replace": "~0.3.2",
+		"grunt-requirejs": "~0.3.1",
+		"recess": "~1.1.6"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/Clubjudge/Project-By-Bruno-Abrantes.git"
+	},
+	"author": "Bruno Abrantes",
+	"license": "MIT"
+}
