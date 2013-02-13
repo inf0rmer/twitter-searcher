@@ -1,8 +1,10 @@
-<nav class="well sidebar">
+<div class="well">
 	<h2 class="nav-header">Search Results</h2>
-	<div class="wrapper">
-		<ul class="nav nav-sidebar js-list">
-		</ul>
-	</div>
-	<button class="btn hide js-loadMore" data-action="load-more"><i class="icon-chevron-down"></i>Load More Results</button>
-</nav>
+	<nav class="sidebar">
+		<div class="wrapper">
+			<ul class="nav nav-sidebar js-list">
+			</ul>
+		</div>
+	</nav>
+	<button class="btn hide js-loadMore" data-action="load-more"><i class="icon-chevron-down"></i>Load More Results<i class="icon-chevron-right"></i></button>
+</div>

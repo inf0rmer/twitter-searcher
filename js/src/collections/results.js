@@ -4,7 +4,7 @@ define([
 	'models/result'
 ], function(Backbone, $, Result){
 
-	var endpoint = "http://clubjudge.dev/test/fixtures/search.json";
+	var endpoint = "http://search.twitter.com/search.json";
 
 	function getRootUrl(url) {
 		return url.toString().replace(/^(.*\/\/[^\/?#]*).*$/,"$1");
@@ -54,7 +54,7 @@ define([
 		},
 
 		parse: function(resp) {
-			this._nextPage = endpoint + resp.next_page;
+			this._nextPage = getRootUrl(window.location.href) + '/proxy.php?url=' + encodeURIComponent(endpoint + resp.next_page);
 			return resp.results;
 		}
 	});
