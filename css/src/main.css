@@ -518,6 +518,10 @@ body {
   border-color: #005580;
 }
 
+[data-widget="visualisation"] .js-message {
+  padding-right: 14px;
+}
+
 [data-widget="visualisation"] .js-message .js-reset {
   position: relative;
   top: -3px;
