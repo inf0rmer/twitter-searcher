@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 			stage: {
 				options: {
 					variables: {
-						'cssFiles': '<link rel="stylesheet" href="/css/src/bootstrap.css"><link rel="stylesheet" href="/css/src/main.css">'
+						'cssFiles': '<link rel="stylesheet" href="/css/src/bootstrap.css">\n<link rel="stylesheet" href="/css/src/main.css">'
 					},
 					prefix: '@@'
 				},
@@ -116,13 +116,13 @@ module.exports = function(grunt) {
 		jst: {
 			compile: {
 				files: {
-					'js/src/views/templates/templates.js': [JS_SRC_DIR + 'views/templates/*.template']
+					'js/src/views/templates/templates.js': ['js/src/views/templates/*.template']
 				}
 			}
 		},
 		watch: {
-			files: ['<config:lint.files>', 'css/src/*.less', JS_SRC_DIR + 'views/templates/*.template'],
-			tasks: ['lint', 'stage']
+			files: ['<config:lint.files>', 'css/src/*.less', 'js/src/views/templates/*.template'],
+			tasks: ['lint', 'recess:dev', 'jst:compile']
 		},
 		jshint: {
 			options: {

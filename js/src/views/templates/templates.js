@@ -59,7 +59,7 @@ return __p;
 this["JST"]["js/src/views/templates/search.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<form class="form-search">\n\t<fieldset>\n\t\t<div class="input-append">\n\t\t\t<input type="search" class="js-input input-large search-query" placeholder="Search for tweets…">\n\t\t\t<button type="submit" class="btn btn-primary js-submit"><i class="icon-search">&nbsp;</i>Search!</button>\n\t\t</div>\n\t</fieldset>\n</form>';
+__p+='<form class="form-search">\n\t<fieldset>\n\t\t<div class="input-append">\n\t\t\t<input type="text" class="js-input input-large search-query" placeholder="Search for tweets…">\n\t\t\t<button type="submit" class="btn btn-primary js-submit"><i class="icon-search">&nbsp;</i><span class="text">Search!</span></button>\n\t\t</div>\n\t</fieldset>\n</form>';
 }
 return __p;
 };

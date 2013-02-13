@@ -839,6 +839,9 @@ body {
     width: 30%;
     height: 35px;
   }
+  [data-widget="search"] form .btn-primary .text {
+    display: none;
+  }
   [data-widget="search"] form .input-append {
     width: 100%;
   }
