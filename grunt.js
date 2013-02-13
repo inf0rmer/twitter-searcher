@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
 	var CSS_SRC_DIR   = 'css/src/',
 		CSS_BUILD_DIR = 'css/dist/',
-		JS_SRC_DIR    = 'js/src',
+		JS_SRC_DIR    = 'js/src/',
 		JS_BUILD_DIR  = 'js/dist/';
 
 	// Project configuration.
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 			compile: {
 				options: {
 					name: 'main',
-					baseUrl: 'js/src',
+					baseUrl: JS_SRC_DIR,
 					out: JS_BUILD_DIR + 'app.min.js',
 					preserveLicenseComments: false,
 					almond: true,
@@ -116,12 +116,12 @@ module.exports = function(grunt) {
 		jst: {
 			compile: {
 				files: {
-					'js/src/views/templates/templates.js': ['js/src/views/templates/*.template']
+					'js/src/views/templates/templates.js': [JS_SRC_DIR + '/views/templates/*.template']
 				}
 			}
 		},
 		watch: {
-			files: ['<config:lint.files>', 'css/src/*.less', 'js/src/views/templates/*.template'],
+			files: ['<config:lint.files>', 'css/src/*.less', JS_SRC_DIR + '/views/templates/*.template'],
 			tasks: ['lint', 'recess:dev', 'jst:compile']
 		},
 		jshint: {
