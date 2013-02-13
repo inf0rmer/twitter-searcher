@@ -46,6 +46,10 @@ define([
 		},
 
 		next: function() {
+			if (!this._nextPage) {
+				return false;
+			}
+
 			this.trigger('loadingMore');
 			this.fetch({
 				remove: false,
