@@ -27,7 +27,7 @@ body {
 }
 
 [data-widget="search"] form .search-query {
-  opacity: 0.5;
+  opacity: 0.7;
   -webkit-transition: opacity 0.2s ease;
      -moz-transition: opacity 0.2s ease;
        -o-transition: opacity 0.2s ease;
@@ -411,6 +411,7 @@ body {
     text-align: center;
   }
   [data-widget="search"] {
+    float: none;
     width: 94%;
     height: 45px;
     padding: 0 3%;
@@ -418,6 +419,7 @@ body {
   }
   [data-widget="search"] .search-query {
     width: 70%;
+    height: 35px;
     box-sizing: border-box;
   }
   [data-widget="search"] form .btn-primary {
@@ -446,6 +448,17 @@ body {
 }
 
 @media (max-width: 979px) and (min-width: 768px) {
+  [data-widget="search"] {
+    float: left;
+    width: 60%;
+    margin: 0;
+  }
+  [data-widget="recent-searches"] {
+    float: left;
+    width: 32%;
+    padding: 0;
+    margin-top: 8px;
+  }
   [data-widget="results"] .well {
     padding: 10px 0;
   }

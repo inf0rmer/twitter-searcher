@@ -27,7 +27,7 @@ body {
 		}
 
 		.search-query {
-			opacity: 0.5;
+			opacity: 0.7;
 
 			.transition(opacity 0.2s ease);
 
@@ -450,9 +450,11 @@ body {
 		height: 45px;
 		padding: 0 3%;
 		margin: 0;
+		float: none;
 
 		.search-query {
 			width: 70%;
+			height: 35px;
 			box-sizing: border-box;
 		}
 
@@ -492,6 +494,19 @@ body {
 }
 
 @media (max-width: 979px) and (min-width: 768px){
+	[data-widget="search"] {
+		width: 60%;
+		float: left;
+		margin: 0;
+	}
+
+	[data-widget="recent-searches"] {
+		width: 32%;
+		float: left;
+		margin-top: 8px;
+		padding: 0;
+	}
+
 	[data-widget="results"] {
 
 		.well {
