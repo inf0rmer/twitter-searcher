@@ -12,9 +12,21 @@ define([
 			'submit .form-search': '_search'
 		},
 
+		_firstRun: true,
+
 		initialize: function() {
 			_.bindAll(this, 'enable');
 			this.bindTo(this, 'updateVal', this._updateVal);
+		},
+
+		afterRender: function() {
+			// Focus input on first run
+			if (this._firstRun) {
+				this._firstRun = false;
+				setTimeout(_.bind(function(){
+					this.inputElement.focus();
+				}, this), 0);
+			}
 		},
 
 		_search: function(evt) {
@@ -27,6 +39,9 @@ define([
 			if (!term) {return;}
 
 			this._disable();
+			setTimeout(_.bind(function(){
+				this.inputElement.blur();
+			}, this), 0);
 			this.trigger('search', term);
 		},
 

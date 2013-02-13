@@ -17,6 +17,7 @@ define([
 	return function() {
 		var update,
 			titlePattern = 'Popularity Contest - Searching for "{{term}}"',
+			recentSearches,
 			searches = new Searches(),
 			results = window.results = new Results(),
 			SearchController = new Controller({
@@ -33,13 +34,17 @@ define([
 			searchResults = SearchController.addView(ResultsView, {
 				collection: results
 			}, '[data-widget="results"]'),
+			visualisation = SearchController.addView(VisualisationView, {}, '[data-widget="visualisation"]');
+
+		//Only instantiate recentSearches if localStorage is supported
+		if (window.localStorage) {
 			recentSearches = SearchController.addView(RecentSearchesView, {
 				collection: searches,
 				currentSearch: function() {
 					return app.get('currentSearch');
 				}
-			}, '[data-widget="recent-searches"]'),
-			visualisation = SearchController.addView(VisualisationView, {}, '[data-widget="visualisation"]');
+			}, '[data-widget="recent-searches"]');
+		}
 
 		update = function(term) {
 			var dfd = $.Deferred(),
