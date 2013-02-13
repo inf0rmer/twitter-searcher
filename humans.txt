@@ -3,13 +3,14 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Bruno Abrantes -- Frontend Developer -- @inf0rmer
 
 # THANKS
 
-    <name>
+    Twitter
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
-    Normalize.css, jQuery, Modernizr
+    Twitter Bootstrap
+    Underscore, Backbone, jQuery, RequireJS, Mocha, Grunt
