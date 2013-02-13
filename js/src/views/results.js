@@ -19,6 +19,8 @@ define([
 		_loadingMore: false,
 		_lastItemOffset: null,
 
+		_errorView: null,
+
 		initialize: function() {
 			this.bindTo(this.collection, 'reset', this._addAll);
 			this.bindTo(this.collection, 'add', this._addOne);
@@ -30,10 +32,14 @@ define([
 			this.bindTo(this.collection, 'error', this.showError);
 
 			this._loadingMore = false;
+
+			if (this._errorView) {
+				this._errorView.destroy();
+			}
 		},
 
 		showError: function() {
-			new ErrorView().render().placeAt(this.$el, 'first');
+			this._errorView = new ErrorView().render().placeAt(this.$el, 'first');
 			this._loadingMore = false;
 			this._unsetLoadingMore();
 		},
@@ -41,6 +47,10 @@ define([
 		loadMore: function(evt) {
 			evt.preventDefault();
 			this.collection.next();
+
+			if (this._errorView) {
+				this._errorView.destroy();
+			}
 		},
 
 		_empty: function() {
