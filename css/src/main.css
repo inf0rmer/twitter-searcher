@@ -6,6 +6,11 @@ body {
   float: right;
 }
 
+.navbar-fixed-top .container {
+  width: auto;
+  padding: 0 22px;
+}
+
 .user-picture.img-circle {
   border: 4px solid white;
 }
