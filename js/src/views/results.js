@@ -58,7 +58,7 @@ define([
 				this._errorView.destroy();
 			}
 
-			this.listElement.html('<li class="loading"><small>Loading &hellip;</small></li>');
+			this.listElement.html('<li class="loading"><i class="icon-refresh icon-spin">&nbsp;</i>Loading &hellip;</li>');
 		},
 
 		_addOne: function(model) {

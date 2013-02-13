@@ -1,6 +1,8 @@
 <form class="form-search">
 	<fieldset>
-		<input type="search" class="js-input input-large search-query" placeholder="Search for tweets…">
-		<button type="submit" class="js-submit btn btn-primary">Search!</button>
+		<div class="input-append">
+			<input type="search" class="js-input input-large search-query" placeholder="Search for tweets…">
+			<button type="submit" class="btn btn-primary js-submit"><i class="icon-search">&nbsp;</i>Search!</button>
+		</div>
 	</fieldset>
 </form>

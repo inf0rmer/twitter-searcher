@@ -51,7 +51,7 @@ return __p;
 this["JST"]["js/src/views/templates/results.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="well">\n\t<h2 class="nav-header">Search Results</h2>\n\t<nav class="sidebar">\n\t\t<div class="wrapper">\n\t\t\t<ul class="nav nav-sidebar js-list">\n\t\t\t</ul>\n\t\t</div>\n\t</nav>\n\t<button class="btn hide js-loadMore" data-action="load-more"><i class="icon-chevron-down"></i>Load More Results<i class="icon-chevron-right"></i></button>\n</div>';
+__p+='<div class="well">\n\t<h2 class="nav-header">Search Results</h2>\n\t<nav class="sidebar">\n\t\t<div class="wrapper">\n\t\t\t<ul class="nav nav-sidebar js-list">\n\t\t\t</ul>\n\t\t</div>\n\t</nav>\n\t<button class="btn hide js-loadMore" data-action="load-more"><i class="icon-chevron-down">&nbsp;</i>Load More Results&nbsp;<i class="icon-chevron-right"></i></button>\n</div>';
 }
 return __p;
 };
@@ -59,7 +59,7 @@ return __p;
 this["JST"]["js/src/views/templates/search.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<form class="form-search">\n\t<fieldset>\n\t\t<input type="search" class="js-input input-large search-query" placeholder="Search for tweets…">\n\t\t<button type="submit" class="js-submit btn btn-primary">Search!</button>\n\t</fieldset>\n</form>';
+__p+='<form class="form-search">\n\t<fieldset>\n\t\t<div class="input-append">\n\t\t\t<input type="search" class="js-input input-large search-query" placeholder="Search for tweets…">\n\t\t\t<button type="submit" class="btn btn-primary js-submit"><i class="icon-search">&nbsp;</i>Search!</button>\n\t\t</div>\n\t</fieldset>\n</form>';
 }
 return __p;
 };
@@ -97,7 +97,7 @@ return __p;
 this["JST"]["js/src/views/templates/visualisation.template"] = function(obj){
 var __p='';var print=function(){__p+=Array.prototype.join.call(arguments, '')};
 with(obj||{}){
-__p+='<div class="alert alert-info js-message">\n</div>\n<div class="result-holder well js-resultHolder">\n</div>';
+__p+='<div class="alert alert-info js-message">\n</div>\n<div class="result-holder well js-resultHolder">\n\t<i class="background icon-twitter icon-4x"></i>\n</div>';
 }
 return __p;
 };
