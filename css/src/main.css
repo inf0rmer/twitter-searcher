@@ -89,6 +89,7 @@ body {
 [data-widget="results"] .nav-header {
   margin: 0;
   text-align: center;
+  border-bottom: 1px solid #ccc;
 }
 
 [data-widget="results"] .wrapper {
@@ -366,6 +367,9 @@ body {
   [data-widget="results"] .nav-sidebar {
     margin-bottom: 5px;
     overflow: hidden;
+  }
+  [data-widget="results"] .nav-header {
+    border-bottom: none;
   }
   [data-widget="results"] .sidebar {
     width: 100%;

@@ -33,7 +33,9 @@ define([
 		},
 
 		showError: function() {
-			new ErrorView().render().placeAt(this.$el, 'only');
+			new ErrorView().render().placeAt(this.$el, 'first');
+			this._loadingMore = false;
+			this._unsetLoadingMore();
 		},
 
 		loadMore: function(evt) {
