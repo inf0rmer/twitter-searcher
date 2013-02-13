@@ -47,11 +47,11 @@ define([
 
 		next: function() {
 			if (!this._nextPage) {
-				return false;
+				throw new Error('_nextPage needs to be defined');
 			}
 
 			this.trigger('loadingMore');
-			this.fetch({
+			return this.fetch({
 				remove: false,
 				update: true
 			});

@@ -120,6 +120,11 @@ define([
 				biggestDifference = 0,
 				css = [];
 
+			// Bail out if there are no views
+			if (!resultViewsLength) {
+				return false;
+			}
+
 			// Get the view with the biggest follower_count
 			mostPopularView = _.max(this._resultViews, function(view) {
 				return view.model.get('followers_count');

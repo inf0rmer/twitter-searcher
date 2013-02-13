@@ -1,6 +1,6 @@
 define([
 	'collections/results'
-], function(Results){
+], function(Results, undef){
 	describe('Search Results Collection', function() {
 		var results, data;
 
@@ -41,7 +41,7 @@ define([
 			});
 		});
 
-		it('should trigger a loadingMore event when fetching the next page', function(done) {
+		it('should trigger a loadingMore event when fetching the next page and there is a _nextPage', function(done) {
 			var flag;
 
 			this.timeout(5000);
@@ -50,10 +50,20 @@ define([
 				flag = true;
 			});
 
-			results.fetch(data).then(function() {
+			results._nextPage = results.url();
+
+			results.next(data).then(function() {
 				expect(flag).to.be.ok();
 				done();
 			});
+		});
+
+		it('should throw an error when fetching the next page and _nextPage is undefined', function() {
+			results._nextPage = undef;
+
+			expect(function() {
+				results.next(data);
+			}).to.throwError();
 		});
 	});
 });

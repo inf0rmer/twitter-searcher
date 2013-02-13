@@ -40,7 +40,7 @@ define([
 			expect(result.get('text')).not.to.be(undef);
 		});
 
-		it('Should trigger an app-wide event when it is selected', function() {
+		it('Should trigger an app-wide event when it is selected and the broadcast option is set to true', function() {
 			var flag = false;
 			Backbone.on('result/selected', function(model) {
 				if (model.cid === result.cid) {
@@ -48,12 +48,12 @@ define([
 				}
 			});
 
-			result.trigger('selected');
+			result.trigger('selected', { broadcast: true });
 
 			expect(flag).to.be(true);
 		});
 
-		it('Should trigger an app-wide event when it is unselected', function() {
+		it('Should trigger an app-wide event when it is unselected and the broadcast option is set to true', function() {
 			var flag = false;
 			Backbone.on('result/unselected', function(model) {
 				if (model.cid === result.cid) {
@@ -61,7 +61,7 @@ define([
 				}
 			});
 
-			result.trigger('unselected');
+			result.trigger('unselected', { broadcast: true });
 
 			expect(flag).to.be(true);
 		});

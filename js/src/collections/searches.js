@@ -15,7 +15,7 @@ define([
 		},
 
 		save: function(search) {
-			/* TODO use shim instead */
+			if (!window.localStorage) { return false; }
 			window.localStorage.setItem(this.storeKey, window.JSON.stringify(this.toJSON()));
 		},
 
@@ -24,7 +24,7 @@ define([
 		},
 
 		fetch: function() {
-			/* TODO use shim instead */
+			if (!window.localStorage) { return false; }
 			var searches = window.JSON.parse(window.localStorage.getItem(this.storeKey));
 			_.each(searches, _.bind(this.add, this));
 		}
