@@ -53,14 +53,16 @@ body {
 	.btn-group {
 		margin: 0;
 
+		.btn {
+			min-width: 140px;
+		}
+
 		.dropdown-menu {
 			font-size: 12px;
 
-			a {
-				&:hover {
-					.muted {
-						color: lighten(@linkColor, 50%);
-					}
+			a:hover {
+				.muted {
+					color: lighten(@linkColor, 50%);
 				}
 			}
 		}
