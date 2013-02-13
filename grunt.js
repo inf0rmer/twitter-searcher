@@ -1,6 +1,11 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
+	var CSS_SRC_DIR   = 'css/src/',
+		CSS_BUILD_DIR = 'css/dist/',
+		JS_SRC_DIR    = 'js/src',
+		JS_BUILD_DIR  = 'js/dist/';
+
 	// Project configuration.
 	grunt.initConfig({
 		meta: {
@@ -12,39 +17,112 @@ module.exports = function(grunt) {
 				'Bruno Abrantes; Licensed MIT */'
 		},
 		lint: {
-			files: ['grunt.js', 'js/src/*.js', 'js/src/!(lib)**/*.js', 'test/*.js', 'test/!(lib)**/*.js']
+			files: ['grunt.js', JS_SRC_DIR + '*.js', JS_SRC_DIR + '!(lib)**/*.js', 'test/*.js', 'test/!(lib)**/*.js']
 		},
 		recess: {
 			dev: {
-				src: ['css/src/main.less'],
-				dest: 'css/src/main.css',
+				src: [CSS_SRC_DIR +  'main.less'],
+				dest: CSS_SRC_DIR +  'main.css',
 				options: {
-					compile: true
+					compile: true,
+					prefixWhitespace: true
+				}
+			},
+			dist: {
+				options: {
+					compile: true,
+					compress: true
+				},
+				src: [CSS_SRC_DIR +  'main.less', CSS_SRC_DIR +  'bootstrap.css'],
+				dest: CSS_BUILD_DIR + 'app.min.css'
+			}
+		},
+		replace: {
+			stage: {
+				options: {
+					variables: {
+						'cssFiles': '<link rel="stylesheet" href="/css/src/bootstrap.css"><link rel="stylesheet" href="/css/src/main.css">'
+					},
+					prefix: '@@'
+				},
+				files: {
+					'index.html': ['index.html']
+				}
+			},
+			dist: {
+				options: {
+					variables: {
+						'cssFiles': '<link rel="stylesheet" href="/css/dist/app.min.css">'
+					},
+					prefix: '@@'
+				},
+				files: {
+					'index.html': ['index.html']
 				}
 			}
 		},
-		concat: {
-			dist: {
-				src: ['<banner:meta.banner>', '<file_strip_banner:lib/FILE_NAME.js>'],
-				dest: 'dist/FILE_NAME.js'
+		copy: {
+			target: {
+				files: {
+					'index.html': 'src/index.html'
+				}
 			}
 		},
-		min: {
-			dist: {
-				src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
-				dest: 'dist/FILE_NAME.min.js'
+		requirejs: {
+			compile: {
+				options: {
+					name: 'main',
+					baseUrl: 'js/src',
+					out: JS_BUILD_DIR + 'app.min.js',
+					preserveLicenseComments: false,
+					almond: true,
+					wrap: true,
+					replaceRequireScript: [{
+						files: ['index.html'],
+						modulePath: JS_BUILD_DIR + 'app.min'
+					}],
+					deps : ['main'],
+					paths : {
+						// JavaScript folders
+						lib : './lib',
+						app : '.',
+
+						// Libraries
+						jquery : './lib/jquery-1.9.1',
+						underscore : './lib/underscore',
+						backbone : './lib/backbone',
+						bootstrap: './lib/bootstrap',
+
+						// Shim Plugin
+						use : './lib/plugins/use',
+						text : './lib/plugins/text'
+						},
+
+						use : {
+						underscore : {
+							attach : '_'
+						},
+						backbone : {
+							deps : [ 'use!underscore', 'jquery' ],
+							attach  : 'Backbone'
+						},
+						bootstrap: {
+							deps: ['jquery']
+						}
+					}
+				}
 			}
 		},
 		jst: {
 			compile: {
 				files: {
-					'js/src/views/templates/templates.js': ['js/src/views/templates/*.template']
+					'js/src/views/templates/templates.js': [JS_SRC_DIR + 'views/templates/*.template']
 				}
 			}
 		},
 		watch: {
-			files: ['<config:lint.files>', 'css/src/*.less', 'js/src/views/templates/*.template'],
-			tasks: ['lint', 'recess:dev', 'jst:compile']
+			files: ['<config:lint.files>', 'css/src/*.less', JS_SRC_DIR + 'views/templates/*.template'],
+			tasks: ['lint', 'stage']
 		},
 		jshint: {
 			options: {
@@ -87,6 +165,11 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-recess');
 	grunt.loadNpmTasks('grunt-contrib-jst');
-	// Default task.
-	grunt.registerTask('default', 'lint');
+	grunt.loadNpmTasks('grunt-requirejs');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-replace');
+
+	// Tasks
+	grunt.registerTask('stage', 'recess:dev jst:compile copy replace:stage');
+	grunt.registerTask('build', 'recess:dist jst:compile copy replace:dist requirejs');
 };

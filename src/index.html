@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Popularity Contest</title>
+		<meta name="description" content="Popularity Contest, where tweets fight to the death!">
+		<meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta http-equiv="cleartype" content="on">
+
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+		@@cssFiles
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<body role="application">
+		<!--[if lt IE 7]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+		<![endif]-->
+
+		<header id="app-nav" class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="/">
+						Popularity Contest
+					</a>
+					<div data-widget="search" class="pull-left"></div>
+					<div data-widget="recent-searches" class="pull-left"></div>
+				</div>
+			</div>
+		</header>
+
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3 hide" data-widget="results"></div>
+				<div class="span9 hide" data-widget="visualisation"></div>
+				<div class="span12 hide" data-widget="first-run">
+					<h1>Fight an epic battle of tweets!</h1>
+					<p>People tweet, did you know that? Actually, people <a href="http://mashable.com/2012/12/18/twitter-200-million-active-users/">tweet a whole damn lot</a>, about the darndest things!</p>
+					<p>Another cool thing is followers. Of course followers are an accurate measure of your self-worth, so search for a topic, choose some tweets and see who comes out on top!</p>
+				</div>
+			</div>
+		</div>
+
+		<script src="/js/src/lib/require.js" data-main="/js/src/config"></script>
+	</body>
+</html>
