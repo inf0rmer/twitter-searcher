@@ -12,6 +12,7 @@ body {
 }
 
 .user-picture.img-circle {
+  overflow: hidden;
   border: 4px solid white;
 }
 
@@ -172,12 +173,19 @@ body {
   padding: 10px;
   font-size: 12px;
   background: #FFF;
+  border-bottom: 1px solid #e6e6e6;
   opacity: 0;
   box-sizing: border-box;
   -webkit-transition: all 1s ease;
      -moz-transition: all 1s ease;
        -o-transition: all 1s ease;
           transition: all 1s ease;
+}
+
+[data-widget="visualisation"] .result-detail.secondary {
+  background: #e6e6e6;
+  border-right: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
 }
 
 [data-widget="visualisation"] .result-detail.secondary blockquote,
@@ -419,7 +427,7 @@ body {
     float: none;
     width: 94%;
     height: 45px;
-    padding: 0 3%;
+    padding: 0;
     margin: 0;
   }
   [data-widget="search"] .search-query {
@@ -433,7 +441,7 @@ body {
   [data-widget="recent-searches"] {
     float: none;
     width: 94%;
-    padding: 0 3%;
+    padding: 0;
     margin: 0;
   }
   [data-widget="recent-searches"] .btn-group {

@@ -16,6 +16,9 @@ define([
 			'click [data-action="load-more"]': 'loadMore'
 		},
 
+		_loadingMore: false,
+		_lastItemOffset: null,
+
 		initialize: function() {
 			this.bindTo(this.collection, 'reset', this._addAll);
 			this.bindTo(this.collection, 'add', this._addOne);
@@ -25,6 +28,8 @@ define([
 			this.bindTo(this.collection, 'loadingMore', this._setLoadingMore);
 			this.bindTo(this.collection, 'change', this._unsetLoadingMore);
 			this.bindTo(this.collection, 'error', this.showError);
+
+			this._loadingMore = false;
 		},
 
 		showError: function() {
@@ -58,15 +63,43 @@ define([
 		},
 
 		_setLoadingMore: function() {
+			var $wrapper = this.$el.find('.wrapper'),
+				$sidebar = this.$el.find('.sidebar');
+
 			this.loadMoreElement
 			.attr('disabled', true)
 			.addClass('loading');
+
+			this._loadingMore = true;
+
+			if ($wrapper.get(0).scrollHeight > $wrapper.get(0).scrollWidth) {
+				this._lastItemOffset = $wrapper.get(0).scrollHeight - $wrapper.height();
+			} else {
+				this._lastItemOffset = $sidebar.get(0).scrollWidth - $sidebar.width();
+			}
 		},
 
 		_unsetLoadingMore: function() {
+			var $wrapper = this.$el.find('.wrapper'),
+				$sidebar = this.$el.find('.sidebar'),
+				options={};
+
 			this.loadMoreElement
 			.removeAttr('disabled')
 			.removeClass('loading');
+
+			if (this._loadingMore) {
+				if ($wrapper.get(0).scrollHeight > $wrapper.get(0).scrollWidth) {
+					options.scrollTop = this._lastItemOffset;
+					$wrapper.animate(options, 'slow');
+				} else {
+					options.scrollLeft = this._lastItemOffset;
+					$sidebar.animate(options, 'slow');
+				}
+
+			}
+
+			this._loadingMore = false;
 		}
 	});
 });

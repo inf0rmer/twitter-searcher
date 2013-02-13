@@ -7,13 +7,19 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>Popularity Contest</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="Popularity Contest, where tweets fight to the death!">
+		<meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta http-equiv="cleartype" content="on">
 
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
 		<link rel="stylesheet" href="/css/src/bootstrap.css">
 		<link rel="stylesheet" href="/css/src/main.css">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
 	</head>
 	<body role="application">
 		<!--[if lt IE 7]>
@@ -34,8 +40,13 @@
 
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div class="span3" data-widget="results"></div>
-				<div class="span9" data-widget="visualisation"></div>
+				<div class="span3 hide" data-widget="results"></div>
+				<div class="span9 hide" data-widget="visualisation"></div>
+				<div class="span12 hide" data-widget="first-run">
+					<h1>Fight an epic battle of tweets!</h1>
+					<p>People tweet, did you know that? Actually, people <a href="http://mashable.com/2012/12/18/twitter-200-million-active-users/">tweet a whole damn lot</a>, about the darndest things!</p>
+					<p>Another cool thing is followers. Of course followers are an accurate measure of your self-worth, so search for a topic, choose some tweets and see who comes out on top!</p>
+				</div>
 			</div>
 		</div>
 

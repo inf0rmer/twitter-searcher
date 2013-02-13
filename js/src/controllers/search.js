@@ -52,6 +52,10 @@ define([
 				search = new Search({term: decodeURIComponent(term)});
 				searches.add(search);
 
+				$('[data-widget="visualisation"]').removeClass('hide');
+				$('[data-widget="results"]').removeClass('hide');
+				$('[data-widget="first-run"]').addClass('hide');
+
 				window.document.title = titlePattern.replace('{{term}}', term);
 
 				results.fetch({
@@ -65,6 +69,9 @@ define([
 				app.router.navigate('search/' + term);
 			} else {
 				dfd.resolve();
+				$('[data-widget="first-run"]').removeClass('hide');
+				$('[data-widget="visualisation"]').addClass('hide');
+				$('[data-widget="results"]').addClass('hide');
 			}
 
 			return dfd;
