@@ -54,6 +54,10 @@ define([
 		},
 
 		_empty: function() {
+			if (this._errorView) {
+				this._errorView.destroy();
+			}
+
 			this.listElement.html('<li class="loading"><small>Loading &hellip;</small></li>');
 		},
 

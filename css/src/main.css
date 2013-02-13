@@ -93,7 +93,7 @@ body {
 }
 
 [data-widget="results"] .wrapper {
-  max-height: 583px;
+  height: 400px;
   overflow: scroll;
   border-bottom: 1px solid #ccc;
 }
