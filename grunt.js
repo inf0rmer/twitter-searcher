@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 					compile: true,
 					compress: true
 				},
-				src: [CSS_SRC_DIR +  'main.less', CSS_SRC_DIR +  'bootstrap.css'],
+				src: [CSS_SRC_DIR +  'bootstrap.css', CSS_SRC_DIR +  'main.less'],
 				dest: CSS_BUILD_DIR + 'app.min.css'
 			}
 		},
