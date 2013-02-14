@@ -79,7 +79,7 @@ module.exports = function(grunt) {
 					wrap: true,
 					replaceRequireScript: [{
 						files: ['index.html'],
-						modulePath: JS_BUILD_DIR + 'app.min'
+						modulePath: '/' + JS_BUILD_DIR + 'app.min'
 					}],
 					deps : ['main'],
 					paths : {
