@@ -456,6 +456,7 @@ body {
   height: 400px;
   overflow: scroll;
   border-bottom: 1px solid #ccc;
+  -webkit-overflow-scrolling: touch;
 }
 
 [data-widget="results"] .wrapper .loading {
@@ -763,6 +764,7 @@ body {
   [data-widget="results"] .sidebar {
     width: 100%;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
   }
   [data-widget="results"] .sidebar .wrapper {
     position: relative;
