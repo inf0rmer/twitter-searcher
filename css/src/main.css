@@ -361,7 +361,7 @@ body {
   padding-top: 60px;
 }
 
-.navbar .brand {
+#app-nav .navbar .brand {
   float: right;
 }
 
