@@ -37,9 +37,9 @@ __p+='<div class="row-fluid">\n\t<header>\n\t\t<a href="http://twitter.com/'+
 ( screen_name )+
 '</h1>\n\t\t</a>\n\t\t<h2 class="pull-right followers badge badge-info">'+
 ( followers_count_pretty )+
-' follower';
+' <span class="extra">follower';
  if (followers_count > 1) { print('s') } 
-;__p+='</h2>\n\t</header>\n\n\t<blockquote class="tweet-text">\n\t\t<p>'+
+;__p+='</span></h2>\n\t</header>\n\n\t<blockquote class="tweet-text">\n\t\t<p>'+
 ( tweet_text )+
 '</p>\n\t</blockquote>\n\n\t<footer class="meta">\n\t\t<small class="muted">Tweeted <time>'+
 ( time_ago )+

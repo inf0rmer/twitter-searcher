@@ -172,11 +172,14 @@ body {
 [data-widget="visualisation"] {
 
 	.js-message {
-		padding-right: 14px;
+		padding-right: 80px;
+		position: relative;
 
 		.js-reset {
-			position: relative;
-			top: -3px;
+			font-size: 85%;
+			position: absolute;
+			right: 10px;
+			top: 5px;
 		}
 	}
 
@@ -223,6 +226,10 @@ body {
 			border-bottom: 1px solid lighten(#000, 70%);
 			border-right: 1px solid lighten(#000, 70%);
 
+			header {
+				overflow: hidden;
+			}
+
 			blockquote, .meta {
 				display: none;
 			}
@@ -230,9 +237,27 @@ body {
 			.followers.badge {
 				width: 100%;
 				box-sizing: border-box;
-				font-size: 1.5em;
+				font-size: 1.2em;
 				text-align: center;
 				margin-top: 0.5em;
+			}
+
+			.screen-name {
+				display: block;
+				width: 100%;
+				text-align: center;
+
+				h1 {
+					font-size: 1.5em;
+					line-height: 0.5em;
+					float: none;
+				}
+
+				.user-picture {
+					float: none;
+					margin: 0 auto;
+					display: block;
+				}
 			}
 		}
 
@@ -467,13 +492,6 @@ body {
 		.js-message {
 			font-size: 85%;
 			position: relative;
-
-			.js-reset {
-				font-size: 85%;
-				position: absolute;
-				right: 10px;
-				top: 5px;
-			}
 		}
 
 		.result-holder {
@@ -551,6 +569,69 @@ body {
 
 	[data-action="load-more"] {
 		font-size: 85%;
+	}
+
+	[data-widget="visualisation"] {
+
+		.result-detail {
+			&.large, &.medium, &.small {
+				font-size: 12px;
+
+				.tweet-text {
+					margin-top: 0.5em;
+					position: static;
+
+					&:after {
+						display: none;
+					}
+				}
+			}
+
+			a {
+				display: block;
+				width: 100%;
+			}
+
+			.screen-name {
+				.user-picture {
+					width: 3.5em;
+				}
+
+				h1 {
+					font-size: 1.5em;
+					line-height: 1.4em;
+					text-overflow: ellipsis;
+					overflow: hidden;
+				}
+			}
+
+			.followers.badge {
+				margin-top: 0.9em;
+				font-size: 0.8em;
+				float: none;
+			}
+
+			&.secondary {
+
+				.extra {
+					display: none;
+				}
+
+				.followers.badge {
+					overflow: hidden;
+					text-overflow: ellipsis;
+					padding: 2px 0;
+				}
+
+				.screen-name {
+					h1 {
+						width: 100%;
+						font-size: 1.2em;
+						line-height: 1em;
+					}
+				}
+			}
+		}
 	}
 }
 

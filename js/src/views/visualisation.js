@@ -49,6 +49,10 @@ define([
 			this._resultViews = [];
 
 			this.options.limit = this.options.limit || 5;
+
+			$(window).on('resize', _.debounce(function() {
+				Backbone.trigger('visualisation/layoutSubviews');
+			}, 350));
 		},
 
 		afterRender: function() {

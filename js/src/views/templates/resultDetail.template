@@ -4,7 +4,7 @@
 			<img class="user-picture img-circle pull-left" src="http://api.twitter.com/1/users/profile_image/<%= screen_name %>?size=bigger" alt="@<%= screen_name %>" />
 			<h1 class="pull-left">@<%= screen_name %></h1>
 		</a>
-		<h2 class="pull-right followers badge badge-info"><%= followers_count_pretty %> follower<% if (followers_count > 1) { print('s') } %></h2>
+		<h2 class="pull-right followers badge badge-info"><%= followers_count_pretty %> <span class="extra">follower<% if (followers_count > 1) { print('s') } %></span></h2>
 	</header>
 
 	<blockquote class="tweet-text">
