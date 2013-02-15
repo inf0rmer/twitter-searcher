@@ -18,14 +18,17 @@ define([
 			expect(el.find('.form-search').length).to.be(1);
 		});
 
-		it('should announce the form submission', function(){
+		it('should announce the form submission', function(done){
 			var theTerm;
+
+			searchForm.enable();
 
 			searchForm.on('search', function(term){
 				theTerm = term;
+				done();
 			});
 
-			el.find('input[type=search]').val('meerkats are awesome');
+			el.find('.js-input').val('meerkats are awesome');
 			el.find('.form-search').submit();
 			expect(theTerm).to.be('meerkats are awesome');
 		});
@@ -37,19 +40,19 @@ define([
 				theTerm = term;
 			});
 
-			el.find('input[type=search]').val('');
+			el.find('.js-input').val('');
 			el.find('.form-search').submit();
 			expect(theTerm).to.be(undef);
 		});
 
 		it('should disable the submit element when searching', function() {
-			el.find('input[type=search]').val('meerkats are awesome');
+			el.find('.js-input').val('meerkats are awesome');
 			el.find('.form-search').submit();
 			expect(el.find('.js-submit').attr('disabled')).to.be.ok();
 		});
 
 		it('should enable the submit element when the enable method is called', function(){
-			el.find('input[type=search]').val('meerkats are awesome');
+			el.find('.js-input').val('meerkats are awesome');
 			el.find('.form-search').submit();
 			expect(el.find('.js-submit').attr('disabled')).to.be.ok();
 			searchForm.enable();

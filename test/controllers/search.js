@@ -70,7 +70,7 @@ define([
 				var dfd = s.update({ term : 'testing' });
 
 				dfd.then(function() {
-					expect($('.form-search').find('input[type="search"]').val()).to.be('testing');
+					expect($('.form-search').find('.js-input').val()).to.be('testing');
 					expect(navigatedTo).to.be('search/testing');
 					done();
 				});
