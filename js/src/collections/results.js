@@ -15,11 +15,15 @@ define([
 
 		_nextPage: null,
 
+		_prevTerm: null,
+
+		term: null,
+
 		model: Result,
 
 		url: function() {
 			var term = encodeURIComponent(this.term);
-			if (this._nextPage !== null) {
+			if (this._nextPage !== null && term === this._prevTerm) {
 				return this._nextPage;
 			}
 			return getRootUrl(window.location.href) + '/proxy.php?url=' + encodeURIComponent(endpoint + '?q='+ term +'&rpp='+ this._numberOfResults +'&include_entities=false&result_type=recent');
@@ -37,6 +41,10 @@ define([
 
 			if (!options.update) {
 				this.trigger('fetching');
+			}
+
+			if (options.term) {
+				this._prevTerm = options.term;
 			}
 
 			return fetch(options).then(_.bind(function() {
