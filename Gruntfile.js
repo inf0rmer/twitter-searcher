@@ -118,6 +118,13 @@ module.exports = function(grunt) {
 				tasks: ['jshint', 'less:dev', 'jst:compile']
 			}
 		},
+		mocha: {
+			all: ['test/*.html'],
+			options: {
+				reporter: 'Nyan',
+				run: false
+			}
+		},
 		jshint: {
 			files: ['grunt.js', 'js/src/*.js', 'js/src/!(lib)**/*.js', 'test/*.js', 'test/!(lib)**/*.js'],
 			options: {
@@ -165,6 +172,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-replace');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-mocha');
 
 	// Tasks
 	grunt.registerTask('default', ['watch']);
