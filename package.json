@@ -1,20 +1,23 @@
 {
-	"name": "Popularity-Contest",
-	"version": "0.1.0",
-	"description": "Tweets fight to the death, whoever's the most popular wins!",
-	"main": "js/dist/app.min.js",
-	"devDependencies": {
-		"grunt-contrib-jst": "~0.3.2",
-		"grunt-contrib-copy": "~0.3.2",
-		"grunt-recess": "~0.1.0",
-		"grunt-replace": "~0.3.2",
-		"grunt-requirejs": "~0.3.1",
-		"recess": "~1.1.6"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/Clubjudge/Project-By-Bruno-Abrantes.git"
-	},
-	"author": "Bruno Abrantes",
-	"license": "MIT"
+  "name": "Popularity-Contest",
+  "version": "0.1.0",
+  "description": "Tweets fight to the death, whoever's the most popular wins!",
+  "main": "js/dist/app.min.js",
+  "devDependencies": {
+    "grunt-contrib-jst": "latest",
+    "grunt-replace": "~0.4.3",
+    "grunt-requirejs": "~0.3.1",
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-less": "~0.5.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-mocha": "~0.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/inf0rmer/twitter-searcher.git"
+  },
+  "author": "Bruno Abrantes",
+  "license": "MIT"
 }
