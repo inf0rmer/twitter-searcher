@@ -21,5 +21,6 @@ var tests = [
 ];
 
 require(tests, function() {
+	console.log('run');
 	mocha.run();
 });

@@ -1,12 +1,5 @@
 /*global module:false*/
 module.exports = function(grunt) {
-
-	var CSS_SRC_DIR   = 'css/src/',
-		CSS_BUILD_DIR = 'css/dist/',
-		JS_SRC_DIR    = 'js/src/',
-		JS_BUILD_DIR  = 'js/dist/';
-
-	// Project configuration.
 	grunt.initConfig({
 		meta: {
 			version: '0.1.0',
@@ -16,25 +9,24 @@ module.exports = function(grunt) {
 				'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
 				'Bruno Abrantes; Licensed MIT */'
 		},
-		lint: {
-			files: ['grunt.js', JS_SRC_DIR + '*.js', JS_SRC_DIR + '!(lib)**/*.js', 'test/*.js', 'test/!(lib)**/*.js']
-		},
-		recess: {
+		less: {
 			dev: {
-				src: [CSS_SRC_DIR +  'main.less'],
-				dest: CSS_SRC_DIR +  'main.css',
+				files: {
+					'css/src/main.css': ['css/src/main.less']
+				},
 				options: {
-					compile: true,
-					prefixWhitespace: true
+					dumpLineNumbers: 'comments',
+					paths: ['css/src']
 				}
 			},
 			dist: {
-				options: {
-					compile: true,
-					compress: true
+				files: {
+					'css/dist/app.min.css': ['css/src/bootstrap.css', 'css/src/main.less']
 				},
-				src: [CSS_SRC_DIR +  'bootstrap.css', CSS_SRC_DIR +  'main.less'],
-				dest: CSS_BUILD_DIR + 'app.min.css'
+				options: {
+					paths: ['css/src'],
+					yuicompress: true
+				}
 			}
 		},
 		replace: {
@@ -72,14 +64,14 @@ module.exports = function(grunt) {
 			compile: {
 				options: {
 					name: 'main',
-					baseUrl: JS_SRC_DIR,
-					out: JS_BUILD_DIR + 'app.min.js',
+					baseUrl: 'js/src',
+					out: 'js/dist/app.min.js',
 					preserveLicenseComments: false,
 					almond: true,
 					wrap: true,
 					replaceRequireScript: [{
 						files: ['index.html'],
-						modulePath: '/' + JS_BUILD_DIR + 'app.min'
+						modulePath: '/' + 'js/dist/app.min'
 					}],
 					deps : ['main'],
 					paths : {
@@ -116,15 +108,25 @@ module.exports = function(grunt) {
 		jst: {
 			compile: {
 				files: {
-					'js/src/views/templates/templates.js': [JS_SRC_DIR + '/views/templates/*.template']
+					'js/src/views/templates/templates.js': ['js/src/views/templates/*.template']
 				}
 			}
 		},
 		watch: {
-			files: ['<config:lint.files>', 'css/src/*.less', JS_SRC_DIR + '/views/templates/*.template'],
-			tasks: ['lint', 'recess:dev', 'jst:compile']
+			dev: {
+				files: ['<%= jshint.files %>', 'css/src/*.less', 'js/src/views/templates/*.template'],
+				tasks: ['jshint', 'less:dev', 'jst:compile']
+			}
+		},
+		mocha: {
+			all: ['test/*.html'],
+			options: {
+				reporter: 'Nyan',
+				run: false
+			}
 		},
 		jshint: {
+			files: ['grunt.js', 'js/src/*.js', 'js/src/!(lib)**/*.js', 'test/*.js', 'test/!(lib)**/*.js'],
 			options: {
 				curly: true,
 				eqeqeq: true,
@@ -137,39 +139,43 @@ module.exports = function(grunt) {
 				boss: true,
 				eqnull: true,
 				browser: true,
-				jquery: true
-			},
-			globals: {
-				Backbone: false,
-				require: false,
-				define: false,
-				requirejs: false,
-				_: false,
-				console: false,
-				expect: false,
-				describe: false,
-				before: false,
-				beforeEach: false,
-				afterEach: false,
-				it: false,
-				setup: false,
-				suite: false,
-				teardown: false,
-				test: false,
-				mocha: false,
-				humanized_time_span: false
+				jquery: true,
+				globals: {
+					Backbone: false,
+					require: false,
+					define: false,
+					requirejs: false,
+					_: false,
+					console: false,
+					expect: false,
+					describe: false,
+					before: false,
+					beforeEach: false,
+					afterEach: false,
+					it: false,
+					setup: false,
+					suite: false,
+					teardown: false,
+					test: false,
+					mocha: false,
+					humanized_time_span: false
+				}
 			}
 		},
 		uglify: {}
 	});
 
-	grunt.loadNpmTasks('grunt-recess');
+	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-jst');
 	grunt.loadNpmTasks('grunt-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-replace');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-mocha');
 
 	// Tasks
-	grunt.registerTask('stage', 'recess:dev jst:compile copy replace:stage');
-	grunt.registerTask('build', 'recess:dist jst:compile copy replace:dist requirejs');
+	grunt.registerTask('default', ['watch']);
+	grunt.registerTask('stage', ['less:dev', 'jst:compile', 'copy', 'replace:stage']);
+	grunt.registerTask('build', ['less:dist', 'jst:compile', 'copy', 'replace:dist', 'requirejs']);
 };
